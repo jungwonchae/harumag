@@ -1,0 +1,94 @@
+
+/* Interview 리스트 */
+.interview-list {
+    max-height: 70vh; // 중요! 이거 없으면 스크롤안된다!
+    flex-grow: 1; /* 리스트가 남은 공간을 차지 */
+    overflow-y: auto; /* 세로 스크롤 활성화 */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3열 레이아웃 */
+    gap: 1rem; /* 카드 간격 */
+    padding-right: 2rem;
+    scrollbar-width: thin;
+    scrollbar-color: #ccc transparent;
+    
+
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 4px;
+    }
+
+
+}
+
+/* 인터뷰 카드 */
+.interview-card {
+    position: relative;
+    overflow: hidden;
+}
+
+/* 카드 이미지 */
+.interview-image {
+    width: 20rem;
+    height: 20rem;
+    display: block;
+    //filter: brightness(40%); /* 어두운 효과 */
+}
+
+/* 오버레이 */
+.interview-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.5rem;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+}
+
+/* 텍스트 스타일 */
+.interview-overlay h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    padding: 0 1rem;
+    font-weight: normal;
+    word-wrap: break-word; /* 긴 단어 줄바꿈 */
+    line-height: 1.4; /* 줄 간격 */
+    white-space: normal; /* 텍스트 줄바꿈 활성화 */
+    text-overflow: ellipsis; /* 넘치는 텍스트 처리 */
+    overflow: hidden;
+}
+
+.interview-overlay p {
+    margin: 0;
+    font-size: 1rem;
+    position: relative; /* 위치 조정 가능 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+}
+
+.interview-overlay p::after {
+    content: "";
+    display: block;
+    width: 2rem; /* 텍스트 크기에 맞게 조정 */
+    height: 1px; /* 밑줄 두께 */
+    background-color: white; /* 밑줄 색상 */
+    margin: 4px auto 0; /* 가운데 정렬 및 간격 설정 */
+}
+
+.interview-overlay span {
+    margin: 0 auto; /* 가운데 정렬 */
+    font-size: 0.9rem;
+    color: #fff; /* 글씨 색상 */
+    background-color: #303030; /* 검은색 배경 */
+    padding: 0.2rem 0.5rem; /* 텍스트 크기에 맞는 여백 */
+    border-radius: 0.5rem; /* 둥근 모서리 */
+    display: inline-block; /* 텍스트 크기에 맞게 배경 크기 조정 */
+    line-height: 1; /* 줄 간격 */
+    max-width: fit-content; /* 텍스트 크기에 맞게 배경 폭 조정 */
+}

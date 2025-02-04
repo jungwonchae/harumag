@@ -1,0 +1,167 @@
+/* 헤더 (검색 및 정렬) */
+.labs-header {
+    display: flex;
+    flex-direction: column; /* 세로 정렬 */
+    align-items: flex-end; /* 오른쪽 정렬 유지 */
+    padding: 1rem 2rem;
+    background-color: #fff;
+    margin-top: 2rem;
+    gap: 1rem;
+}
+
+.labs-search-container {
+    position: relative;
+    width: 35%;
+}
+
+.labs-search-input {
+    width: 100%;
+    border: none;
+    border-bottom: 0.5px solid #000;
+    outline: none;
+    padding: 0.5rem 0;
+    font-size: 1rem;
+}
+
+.labs-search-icon {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    img {
+        width: 1rem;
+        height: 1rem;
+    }
+}
+
+/* 정렬 */
+.labs-sort-container {
+    position: relative;
+}
+
+.labs-sort-btn {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+
+/* 정렬 옵션 컨테이너 */
+.labs-sort-options {
+    position: absolute;
+    top: 2rem;
+    right: 0;
+    background: #fff; /* 흰색 배경 */
+    border: 1px solid #ccc; /* 경계선 추가 */
+    border-radius: 8px; /* 둥근 모서리 */
+    list-style: none; /* 기본 리스트 스타일 제거 */
+    padding: 0.5rem 0; /* 안쪽 여백 */
+    margin: 0; /* 바깥 여백 제거 */
+    display: none; /* 기본적으로 숨김 */
+    z-index: 1000; /* 우선순위 높게 설정 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+    width: 8rem; /* 일정한 너비 */
+}
+
+/* 활성화 상태 */
+.labs-sort-options.show {
+    display: block; /* 표시 */
+}
+
+/* 정렬 옵션 항목 */
+.labs-sort-options li {
+    padding: 0.5rem 1rem; /* 항목 내부 여백 */
+    cursor: pointer; /* 마우스 커서 표시 */
+    font-size: 1rem; /* 글씨 크기 */
+    color: #000; /* 글씨 색상 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+    white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+}
+
+/* 호버 효과 */
+.labs-sort-options li:hover {
+    background-color: #f0f0f0; /* 호버 시 배경색 */
+}
+
+
+/* LAB 리스트 */
+.labs-list {
+    display: flex;
+    flex-direction: column;
+    //align-items: flex-end; /* 자식 요소를 왼쪽 정렬 */
+    gap: 1rem;
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-right: 2rem;
+    scrollbar-width: thin;
+    scrollbar-color: #ccc transparent;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 4px;
+    }
+}
+
+/* LAB 카드 */
+.labs-card {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    //border-radius: 8px;
+    //box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+    gap: 1rem;
+}
+
+.labs-card-image {
+    width: 8rem;
+    height: 8rem;
+    object-fit: contain;
+}
+
+.labs-card-divider {
+    width: 1px; /* 선의 두께 */
+    height: 8rem; /* 선의 높이 */
+    background-color: #000; /* 선의 색상 */
+    margin: 0 0.5rem; /* 이미지와 내용 사이 간격 */
+}
+
+.labs-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.labs-card-content p {
+    margin: 0;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.labs-card-content h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000;
+}
+
+.labs-card-content h4 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: normal;
+    color: #000;
+}
+
+.labs-tags {
+    color: #888;
+    font-size: 0.85rem;
+}

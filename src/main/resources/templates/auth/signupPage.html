@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="signup-container">
+        <!-- Left Section -->
+        <div class="signup-left">
+            <div class="signup-left-content">
+                <img src="/assets/images/haru_logo_white.svg" alt="Haru Logo" class="haru-logo">
+                <p class="signup-description">
+                    소중한 하루를 만드는 정보와 이야기를<br>
+                    전하는 온라인 매거진
+                </p>
+            </div>
+        </div>
+        
+
+        <!-- Right Section -->
+        <div class="signup-right">
+            <div class="signup-form">
+                <h2>회원가입</h2>
+                <p>이미 회원이세요? <a href="/pages/auth/loginPage.html">로그인</a></p>
+                <button class="google-login">
+                    <img src="/assets/images/google_signup.svg" alt="Google Signup">
+                </button>
+                <div class="divider">
+                    <span>또는</span>
+                </div>
+                <form action="#">
+                    <label for="email">이메일</label>
+                    <input type="email" id="email" placeholder="이메일을 입력하세요." class="input-field">
+                    
+                    <label for="password">비밀번호</label>
+                    <div class="password-container">
+                        <input type="password" id="password" placeholder="비밀번호를 입력하세요." class="input-field">
+                        <button type="button" class="toggle-password">
+                            <img src="/assets/icons/invisible.svg" alt="Toggle Password Visibility" class="password-icon">
+                        </button>
+                    </div>
+                    
+                    <label for="confirm-password">비밀번호 확인</label>
+                    <div class="password-container">
+                        <input type="password" id="confirm-password" placeholder="비밀번호를 다시 입력하세요." class="input-field">
+                        <button type="button" class="toggle-password">
+                            <img src="/assets/icons/invisible.svg" alt="Toggle Password Visibility" class="password-icon">
+                        </button>
+                    </div>
+                    <!-- 약관 동의 버튼 -->
+                    <div class="terms-container">
+                        <div class="terms-item">
+                            <input type="checkbox" id="agree-all" class="checkbox">
+                            <label for="agree-all"><strong>모두 확인, 동의합니다</strong></label>
+                        </div>
+                        <div class="terms-item">
+                            <input type="checkbox" id="agree-terms" class="checkbox">
+                            <label for="agree-terms">회원가입 약관 동의 <span class="required">(필수)</span></label>
+                            <button type="button" class="view-button">보기</button>
+                        </div>
+                        <div class="terms-item">
+                            <input type="checkbox" id="agree-privacy" class="checkbox">
+                            <label for="agree-privacy">개인정보 수집 및 이용 동의 <span class="required">(필수)</span></label>
+                            <button type="button" class="view-button">보기</button>
+                        </div>
+                    </div>
+                                     
+                    <button type="submit" class="signup-button">회원가입</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle password visibility
+        document.addEventListener("DOMContentLoaded", () => {
+            const toggleButtons = document.querySelectorAll(".toggle-password");
+
+            toggleButtons.forEach((button) => {
+                button.addEventListener("click", () => {
+                    const passwordInput = button.previousElementSibling;
+                    const passwordIcon = button.querySelector("img");
+
+                    const isPasswordVisible = passwordInput.type === "text";
+                    passwordInput.type = isPasswordVisible ? "password" : "text";
+
+                    passwordIcon.src = isPasswordVisible
+                        ? "/assets/icons/invisible.svg"
+                        : "/assets/icons/visible.svg";
+                    passwordIcon.alt = isPasswordVisible
+                        ? "Toggle Password Visibility"
+                        : "Hide Password";
+                });
+            });
+        });
+    </script>
+</body>
+</html>

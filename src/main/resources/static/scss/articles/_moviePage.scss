@@ -1,0 +1,120 @@
+.contents-moviePage {
+    display: flex;
+    height: 130vh; /* 헤더 제외 전체 높이 */
+}
+
+/* Editor's Choice Section */
+.editor-choice {
+    padding-right: 2rem;
+    padding-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.editor-choice-header {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.editor-choice-header h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.editor-choice-header span {
+    font-size: 0.8rem;
+    padding-left: 2rem;
+    color: #7D7D7D;
+    font-weight: bold;
+}
+
+.editor-choice-container {
+    display: flex;
+    gap: 2rem;
+    justify-content: start;
+}
+
+.editor-choice-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.movie-image {
+    width: 12rem;
+    height: 18rem;
+    object-fit: cover;
+    //border-radius: 8px;
+    //box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.movie-title {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
+}
+
+/* Movie List Section */
+.movie-list {
+    padding-right: 2rem;
+}
+
+.movie-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.movie-title-header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.movie-news-list {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.movie-news-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.movie-news-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #ddd;
+    gap: 1rem;
+}
+
+.movie-news-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.movie-news-title {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000;
+}
+
+.movie-news-keyword {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.movie-news-date {
+    font-size: 0.9rem;
+    color: #444;
+    white-space: nowrap;
+}

@@ -1,0 +1,47 @@
+// main.scss
+
+@font-face {
+    font-family: 'Academic M54';
+    src: url('../fonts/PretendardVariable.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+
+  @font-face {
+    font-family: 'RedHatDisplay';
+    src: url('/assets/fonts/RedHatDisplay.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+//나머지 SCSS 파일 import
+  @import 'homePage';
+  @import 'header';
+  @import 'footer';
+  @import 'contents';
+  @import 'detailPage';
+
+  @import 'auth/loginPage';
+  @import 'auth/signupPage';
+
+  @import 'articles/economyPage';
+  @import 'articles/interviewPage';
+  @import 'articles/moviePage';
+
+  @import 'lab/labPage';
+
+  @import 'news/awardPage';
+  @import 'news/swPage';
+
+  @import 'newsletter/newsletterPage';
+  
+  @import 'shop/goodsPage';
+
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haru Magazine - newsletterPage</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-logo">
+            <a href="/pages/homePage.html">
+                <img src="/assets/images/haru_logo.svg" alt="HARU Logo">
+            </a>
+        </div>        
+        <nav class="header-nav">
+            <ul>
+                <li><a href="/pages/lab/labsPage.html">lab</a></li>
+                <li><a href="/pages/news/awardPage.html">news</a></li>
+                <li><a href="/pages/articles/interviewPage.html">articles</a></li>
+                <li><a href="/pages/newsletter/newsletterPage.html" class="active">newsletter</a></li>
+                <li><a href="/pages/shop/goodsPage.html">shop</a></li>
+                <li><a href="/pages/auth/loginPage.html" class="login-btn">Log In</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+        <section class="contents-page">
+            <!-- 왼쪽 영역 : 구독 내용 -->
+            <aside class="newsletter-contents-nav">
+                <div class="subscribe-container">
+                    <h3>Haru Magazine</h3>
+                    <p>
+                        소중한 하루를 만드는 정보와 이야기를 전하는 월간 온라인 매거진 한동대 소중대 소식, 기업인 인터뷰, 경제 뉴스, 영화 추천 등 다양한 주제를 담아 한 달에 한 번 발간됩니다. 
+                        흥미로운 사람들의 이야기와 새로운 시각을 통해 독자 여러분의 하루를 더 가치 있게 만듭니다.
+                    </p>
+                    <form class="subscribe-form">
+                        <div class="input-container">
+                            <input type="text" placeholder="Name" class="subscribe-input">
+                        </div>
+                        <div class="input-container">
+                            <input type="email" placeholder="Email" class="subscribe-input">
+                        </div>
+                        <div class="subscribe-agreement">
+                            <input type="checkbox" id="agree" class="subscribe-checkbox">
+                            <label for="agree">개인정보 수집 및 이용에 동의합니다.</label>
+                        </div>
+                        <button type="submit" class="subscribe-button">SUBSCRIBE</button>
+                    </form>
+                </div>
+            </aside>
+            
+            <section class="newsletter-inner-content">
+                <!-- 오른쪽 영역 : 검색 및 내용 -->
+                <section class="labs-header">
+                    <div class="labs-search-container">
+                        <input type="text" id="labs-search-input" class="labs-search-input" placeholder=" ">
+                        <button class="labs-search-icon">
+                            <img src="/assets/images/search_icon.svg" alt="Search Icon">
+                        </button>
+                    </div>
+                    <div class="labs-sort-container">
+                        <button id="labs-sort-btn" class="labs-sort-btn">All ▼</button>
+                        <ul id="labs-sort-options" class="labs-sort-options">
+                            <li data-sort="all">All</li>
+                            <li data-sort="asc">최신순</li>
+                            <li data-sort="desc">오래된순</li>
+                        </ul>
+                    </div>
+                </section>
+
+
+                <!-- 뉴스레터 -->
+                <section id="newsletter-list" class="newsletter-list">
+                    <!-- 첫 번째 카드 -->
+                    <div class="newsletter-card">
+                        <img src="/assets/images/home_interview1.svg" alt="newsletter" class="newsletter-card-image">
+                        <div class="newsletter-card-divider"></div> <!-- 사진과 내용 사이의 선 -->
+                        <div class="newsletter-card-content">
+                            <p>Vol.1</p>
+                            <h3>혁신을 이끄는 리더, 홍길동의 경영 철학</h3>
+                            <h4>
+                                #비전 #창업 계기 #혁신 #고객 신뢰 #팀 헌신 #열린 소통 #지속 가능성
+                            </h4>
+                            <p class="newsletter-tags">company</p>
+                        </div>
+                    </div>
+                    <!-- 두 번째 카드 -->
+                    <div class="newsletter-card">
+                        <img src="/assets/images/home_interview2.svg" alt="newsletter" class="newsletter-card-image">
+                        <div class="newsletter-card-divider"></div> <!-- 사진과 내용 사이의 선 -->
+                        <div class="newsletter-card-content">
+                            <p>Vol.2</p>
+                            <h3>학생 스타트업의 성공 스토리</h3>
+                            <h4>
+                                #학생 창업 #열정 #도전 #창의성 #성공 사례
+                            </h4>
+                            <p class="newsletter-tags">student</p>
+                        </div>
+                    </div>
+
+                    <!-- 세 번째 카드 -->
+                    <div class="newsletter-card">
+                        <img src="/assets/images/home_interview2.svg" alt="newsletter" class="newsletter-card-image">
+                        <div class="newsletter-card-divider"></div> <!-- 사진과 내용 사이의 선 -->
+                        <div class="newsletter-card-content">
+                            <p>Vol.3</p>
+                            <h3>AI 혁신의 최전선, 기업가 김철수의 이야기</h3>
+                            <h4>
+                                #AI #혁신 #미래 기술 #지속 가능성
+                            </h4>
+                            <p class="newsletter-tags">company</p>
+                        </div>
+                    </div>
+
+                    <!-- 네 번째 카드 -->
+                    <div class="newsletter-card">
+                        <img src="/assets/images/home_interview1.svg" alt="newsletter" class="newsletter-card-image">
+                        <div class="newsletter-card-divider"></div> <!-- 사진과 내용 사이의 선 -->
+                        <div class="newsletter-card-content">
+                            <p>Vol.4</p>
+                            <h3>글로벌 시장을 향한 한국 스타트업의 발자취</h3>
+                            <h4>
+                                #글로벌 #시장 #도전 #팀워크
+                            </h4>
+                            <p class="newsletter-tags">company</p>
+                        </div>
+                    </div>
+
+                    <!-- 다섯 번째 카드 -->
+                    <div class="newsletter-card">
+                        <img src="/assets/images/home_interview1.svg" alt="newsletter" class="newsletter-card-image">
+                        <div class="newsletter-card-divider"></div> <!-- 사진과 내용 사이의 선 -->
+                        <div class="newsletter-card-content">
+                            <p>Vol.5</p>
+                            <h3>미래를 위한 친환경 스타트업</h3>
+                            <h4>
+                                #친환경 #미래 #지속 가능 #사회적 가치
+                            </h4>
+                            <p class="newsletter-tags">company</p>
+                        </div>
+                    </div>
+                </section>
+
+
+                </section>  
+            </section>
+        </section>
+    </main>
+
+    <script>
+        //화살표 애니메이션
+        document.addEventListener("DOMContentLoaded", () => {
+            const sortButton = document.getElementById("labs-sort-btn");
+            const sortOptions = document.getElementById("labs-sort-options");
+            const sortItems = document.querySelectorAll("#labs-sort-options li");
+
+            // 초기 버튼 텍스트 설정
+            let currentSort = "All";
+            sortButton.textContent = `${currentSort} ▼`;
+
+            // 버튼 클릭 시 옵션 표시/숨김
+            sortButton.addEventListener("click", () => {
+                sortOptions.classList.toggle("show");
+            });
+
+            // 옵션 클릭 시 처리
+            sortItems.forEach(item => {
+                item.addEventListener("click", () => {
+                    currentSort = item.textContent; // 클릭된 옵션의 텍스트 가져오기
+                    sortButton.textContent = `${currentSort} ▼`; // 버튼 텍스트 변경
+                    sortOptions.classList.remove("show"); // 옵션 숨기기
+
+                    // 정렬 로직 추가 가능
+                    console.log(`선택된 정렬: ${item.getAttribute("data-sort")}`);
+                });
+            });
+
+            // 페이지 외부 클릭 시 옵션 숨기기
+            document.addEventListener("click", (e) => {
+                if (!sortButton.contains(e.target) && !sortOptions.contains(e.target)) {
+                    sortOptions.classList.remove("show");
+                }
+            });
+        });
+    </script>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="/assets/images/haru_logo.svg" alt="HARU Logo">
+                <p>소중한 하루를 만드는 정보와 이야기를 전하는 온라인 매거진</p>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-right">
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Notice</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Subscribe</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="#"><img src="/assets/images/insta_icon.svg" alt="Instagram"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2025. All rights reserved.</p>
+        </div>
+    </footer>
+    
+</body>
+</html>

@@ -1,0 +1,238 @@
+.login-container {
+    display: flex;
+    height: 100vh;
+}
+.logo-container h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.logo-container p {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+//로그인 왼쪽
+.login-left {
+    flex: 1;
+    height: 100vh; /* 화면 전체 높이 */
+    background: linear-gradient(135deg, #507FBA, #8EBCF3); /* 그라데이션 배경 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white; /* 글씨 색상 */
+}
+
+.login-left-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem; /* 로고와 텍스트 간격 */
+}
+
+.haru-logo {
+    width: 5rem; /* 로고 크기 */
+    height: auto;
+}
+
+.login-description {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: white; /* 설명 텍스트 색상 */
+}
+
+//로그인 오른쪽?
+.login-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.login-form {
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.login-form h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.login-form p {
+    font-size: 0.9rem;
+    color: #666;
+}
+//회원가입
+p a {
+    color: #000; /* 링크 색상을 검정으로 설정 */
+    text-decoration: none; /* 밑줄 제거 */
+    font-weight: normal; /* 기본 텍스트와 동일한 굵기 */
+}
+
+p a:hover {
+    text-decoration: underline; /* 호버 시 밑줄 추가 */
+}
+
+//구글 로그인
+.google-login {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+
+    img {
+        width: 100%; /* SVG 이미지를 버튼 크기에 맞게 조정 */
+        height: auto;
+    }
+}
+
+//또는
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #ccc;
+    margin: 0 0.5rem;
+}
+
+//아이디입력
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+label {
+    font-size: 0.8rem;
+    color: #555;
+    font-weight: bold;
+    text-align: left; /* 왼쪽 정렬 */
+    margin-top: 1rem;
+}
+
+.input-field {
+    width: 100%;
+    padding: 0.5rem 0;
+    font-size: 0.8rem;
+    border: none;
+    border-bottom: 1px solid #ddd; /* 기본 밑줄 */
+    transition: border-color 0.3s ease, border-width 0.3s ease;
+
+    &:focus {
+        border-color: #000; /* 포커스 시 밑줄 색상 변경 */
+        border-width: 2px; /* 밑줄 두께 증가 */
+        outline: none; /* 기본 포커스 아웃라인 제거 */
+    }
+
+    &::placeholder {
+        color: #aaa; /* 플레이스홀더 색상 */
+    }
+}
+
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .password-icon {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1.5rem;
+        height: 1.5rem;
+        cursor: pointer;
+    }
+}
+
+.toggle-password {
+    background: none; /* 버튼의 기본 배경 제거 */
+    border: none; /* 버튼의 기본 테두리 제거 */
+    padding: 0; /* 불필요한 여백 제거 */
+    cursor: pointer; /* 클릭 가능한 버튼처럼 보이도록 설정 */
+    display: flex; /* 아이콘 정렬을 위한 설정 */
+    align-items: center;
+    justify-content: center;
+    width: auto; /* 버튼 크기를 아이콘 크기에 맞춤 */
+    height: auto; /* 버튼 크기를 아이콘 크기에 맞춤 */
+}
+
+.auto-login {
+    display: flex;
+    align-items: center; /* 수직 정렬 */
+    gap: 0.5rem; /* 체크박스와 텍스트 사이 간격 */
+}
+
+.auto-login label {
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: #555;
+    line-height: 1; /* 텍스트 줄 높이를 줄임 */
+    margin: 0; /* 기본 여백 제거 */
+}
+
+.auto-login input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    margin: 0; /* 기본 여백 제거 */
+    vertical-align: middle; /* 체크박스와 텍스트를 수직 정렬 */
+}
+
+
+.login-button {
+    background-color: #4285F4;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 2rem;
+
+    &:hover {
+        background-color: #357ae8;
+    }
+}
+
+
+.links {
+    display: flex; /* 수평 정렬 */
+    justify-content: center; /* 가운데 정렬 */
+    gap: 1.5rem; /* 링크 간격 */
+    margin-top: 1rem; /* 위와의 간격 */
+}
+
+.links a {
+    font-size: 0.8rem; /* 텍스트 크기 */
+    font-weight: 200;
+    color: #ccc; /* 링크 색상 */
+    text-decoration: none; /* 밑줄 제거 */
+    font-weight: bold; /* 강조 */
+
+    transition: color 0.3s ease; /* 호버 효과를 위한 트랜지션 */
+}
+
+.links a:hover {
+    color: #357ae8; /* 호버 시 색상 변화 */
+    text-decoration: underline; /* 호버 시 밑줄 추가 */
+}

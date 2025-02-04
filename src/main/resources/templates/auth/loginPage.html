@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <!-- Left Section -->
+        <div class="login-left">
+            <div class="login-left-content">
+                <img src="/assets/images/haru_logo_white.svg" alt="Haru Logo" class="haru-logo">
+                <p class="login-description">
+                    소중한 하루를 만드는 정보와 이야기를<br>
+                    전하는 온라인 매거진
+                </p>
+            </div>
+        </div>
+        
+
+        <!-- Right Section -->
+        <div class="login-right">
+            <div class="login-form">
+                <h2>로그인</h2>
+                <p>아직 회원이 아니세요? <a href="/pages/auth/signupPage.html">회원가입</a></p>
+                <button class="google-login">
+                    <img src="/assets/images/google_login.svg" alt="Google Login">
+                </button>
+                <div class="divider">
+                    <span>또는</span>
+                </div>
+                <form action="#">
+                    <label for="email">이메일</label>
+                    <input type="email" id="email" placeholder="이메일을 입력하세요." class="input-field">
+                    <label for="password">비밀번호</label>
+                    <div class="password-container">
+                        <input type="password" id="password" placeholder="비밀번호를 입력하세요." class="input-field">
+                        <button type="button" class="toggle-password">
+                            <img src="/assets/icons/invisible.svg" alt="Toggle Password Visibility" class="password-icon">
+                        </button>
+                    </div>
+                    <div class="auto-login">
+                        <input type="checkbox" id="auto-login">
+                        <label for="auto-login">자동 로그인</label>
+                    </div>
+                    <button type="submit" class="login-button">로그인</button>
+                </form>
+                               
+                <div class="links">
+                    <a href="/pages/auth/signupPage.html">회원 가입</a>
+                    <a href="#">정보 찾기</a>
+                    <a href="/pages/homePage.html">메인으로</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        //아이콘 변경 js
+        document.addEventListener("DOMContentLoaded", () => {
+        const passwordInput = document.getElementById("password");
+        const toggleButton = document.querySelector(".toggle-password");
+        const passwordIcon = toggleButton.querySelector("img");
+
+        toggleButton.addEventListener("click", () => {
+            const isPasswordVisible = passwordInput.type === "text";
+
+            // Toggle input type
+            passwordInput.type = isPasswordVisible ? "password" : "text";
+
+            // Toggle icon
+            passwordIcon.src = isPasswordVisible
+                ? "/assets/icons/invisible.svg"
+                : "/assets/icons/visible.svg";
+            passwordIcon.alt = isPasswordVisible
+                ? "Toggle Password Visibility"
+                : "Hide Password";
+        });
+    });
+    </script>
+</body>
+</html>

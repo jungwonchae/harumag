@@ -1,0 +1,2069 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Academic M54";
+  src: url("../fonts/PretendardVariable.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "RedHatDisplay";
+  src: url("/assets/fonts/RedHatDisplay.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+/* 전역 CSS 파일이나 style 태그 등 원하는 곳에 추가 */
+.hide-scrollbar {
+  /* 파이어폭스 전용 */
+  scrollbar-width: none;
+  /* 구형 IE/Edge 전용 */
+  -ms-overflow-style: none;
+}
+
+/* 웹킷 계열 브라우저(크롬, 사파리 등)를 위한 처리 */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hidden-section {
+  visibility: hidden; /* 숨김 처리 */
+  opacity: 0; /* 완전히 투명하게 */
+  transition: visibility 0s linear 0.3s, opacity 0.3s ease; /* 부드러운 전환 */
+}
+
+.visible-section {
+  visibility: visible !important; /* 보이기 처리 */
+  opacity: 1 !important; /* 불투명 */
+  transition: opacity 0.3s ease !important; /* 부드러운 전환 */
+}
+
+/* HARU 스타일 */
+.home-title {
+  font-size: 12rem;
+  font-weight: bold;
+  color: #010101;
+  margin: 0;
+  opacity: 1; /* 처음에는 완전히 보임 */
+  transform: translateY(0px) scale(1); /* 초기 크기와 위치 */
+  transition: transform 0.3s ease, opacity 0.3s ease; /* 부드러운 애니메이션 */
+}
+
+/* 표어 스타일 */
+.home-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 15rem;
+  color: rgba(255, 255, 255, 0); /* 초기 투명 */
+  opacity: 0; /* 초기 투명 */
+  transition: opacity 0.3s ease, color 0.3s ease; /* 부드러운 애니메이션 */
+}
+
+/* 레이아웃 */
+.home-section1 {
+  position: fixed; /* 고정 위치 */
+  width: 100%;
+  height: 100vh; /* 화면 전체 차지 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10; /* 다른 섹션 위에 위치 */
+  transition: transform 0.3s ease; /* 부드러운 전환 효과 */
+  margin-top: 15rem;
+  top: 4rem;
+}
+
+.home-image-container {
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* 텍스트 아래 배치 */
+}
+
+.home-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 이미지를 화면에 맞춤 */
+}
+
+.home-text-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* 다음 콘텐츠 섹션 */
+.content-section {
+  position: relative;
+  margin-top: 100rem; /* 다음 섹션과 분리 */
+  padding: 2rem;
+  background: #f5f5f5;
+}
+
+.content-section h2 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.content-section p {
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* Section2 매거진 스타일 */
+.home-section2 {
+  visibility: hidden;
+  position: relative;
+  margin-top: 10rem;
+  background-color: #fff; /* 배경색 흰색 */
+  text-align: center; /* 텍스트 중앙 정렬 */
+}
+
+.home-section2-container {
+  max-width: 800px; /* 중앙 콘텐츠 최대 너비 */
+  margin: 0 auto; /* 중앙 정렬 */
+  padding: 2rem;
+}
+
+.home-section2-title {
+  font-size: 1.5rem; /* 큰 제목 폰트 크기 */
+  font-weight: bold; /* 볼드체 */
+  color: #000; /* 검은색 텍스트 */
+  margin-bottom: 1rem; /* 제목 하단 여백 */
+}
+
+.home-section2-divider {
+  display: block;
+  margin: 0.5rem auto; /* 중앙 정렬 */
+  width: 30rem; /* 선 너비 */
+}
+
+.home-section2-content {
+  margin: 2rem 0;
+  font-family: Arial, sans-serif; /* 기본 폰트 */
+}
+
+.home-section2-subtitle {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.home-section2-description {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.home-section2-list {
+  list-style: none; /* 기본 리스트 스타일 제거 */
+  padding: 0;
+  margin: 0;
+}
+
+.home-section2-list li {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+}
+
+/* 버튼 스타일 */
+.home-section2-button {
+  display: inline-block;
+  padding: 0.5rem 2rem; /* 버튼 크기 조정 */
+  font-size: 1.2rem;
+  font-weight: 100;
+  color: #000; /* 글씨 색상 */
+  background-color: transparent; /* 배경 없음 */
+  border: 1px solid #000; /* 검은색 테두리 */
+  cursor: pointer;
+  font-family: "RedHatDisplay", sans-serif; /* 지정 폰트 */
+  transition: background-color 0.3s ease, color 0.3s ease; /* 호버 효과 */
+  margin: 1.5rem; /* 버튼 여백 */
+  text-align: center;
+  text-decoration: none; /* 텍스트 밑줄 제거 */
+}
+
+.home-section2-button:hover {
+  background-color: #000; /* 호버 시 배경색 변경 */
+  color: #fff; /* 호버 시 글씨 색상 변경 */
+}
+
+.home-interview {
+  margin: 4rem 0;
+  display: flex; /* Flexbox 활성화 */
+  justify-content: space-between; /* 기본 간격 조정 */
+}
+.home-interview .home-interview-toc {
+  flex: 3;
+}
+.home-interview .home-interview-toc .home-interview-line {
+  display: flex; /* flex 사용 */
+  align-items: flex-start; /* 왼쪽 정렬 */
+  width: 20rem;
+  height: 1px;
+  background-color: #000;
+  border: none;
+  margin: 4.5rem 0;
+}
+.home-interview .home-interview-toc .home-interview-interview {
+  font-family: "RedHatDisplay", sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000;
+  margin-left: 5rem;
+}
+.home-interview .home-interview-container {
+  flex: 7;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end; /* 왼쪽 정렬 */
+  margin-top: 10rem;
+  margin-right: 5rem;
+  gap: 1rem;
+}
+.home-interview .home-interview-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #000;
+}
+.home-interview .home-interview-card {
+  flex: 0 0 20vw; /* 고정된 카드 크기 */
+  text-align: left;
+}
+.home-interview .home-interview-card .home-interview-image {
+  width: 100%;
+  height: auto;
+}
+.home-interview .home-interview-card .home-interview-content {
+  margin-top: 1rem;
+}
+.home-interview .home-interview-card .home-interview-content .home-interview-meta {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+.home-interview .home-interview-card .home-interview-content .home-interview-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 0.5rem;
+}
+.home-interview .home-interview-card .home-interview-content .home-interview-summary {
+  font-size: 0.9rem;
+  color: #777;
+  line-height: 1.5;
+}
+
+.home-weekly-news {
+  margin: 4rem 0;
+}
+.home-weekly-news .home-weekly-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.home-weekly-news .home-weekly-header .home-weekly-line {
+  width: 20rem;
+  height: 1px;
+  background-color: #000;
+  border: none;
+}
+.home-weekly-news .home-weekly-header .home-weekly-title {
+  font-family: "RedHatDisplay", sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000;
+  margin-left: 5rem;
+  margin-bottom: 5rem;
+}
+.home-weekly-news .carousel-container {
+  display: flex;
+  overflow-x: auto; /* 가로 스크롤 허용 */
+  scroll-behavior: smooth; /* 스크롤 부드럽게 */
+  gap: 1rem; /* 카드 간 간격 */
+}
+.home-weekly-news .home-news-carousel {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.home-weekly-news .home-news-carousel .carousel-container {
+  overflow: hidden;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.home-weekly-news .home-news-carousel .carousel-container .news-card {
+  flex: 0 0 30%; /* 카드 너비를 적절히 설정 */
+  margin-right: 1rem; /* 카드 간 간격 */
+}
+.home-weekly-news .home-news-carousel .carousel-container .news-card .news-image {
+  width: 40rem;
+  height: auto;
+  border-radius: 10px;
+}
+.home-weekly-news .home-news-carousel .carousel-container .news-card .news-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+}
+.home-weekly-news .home-news-carousel .carousel-container .news-card .news-content .news-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.home-weekly-news .home-news-carousel .carousel-container .news-card .news-content .news-date {
+  font-size: 1rem;
+}
+.home-weekly-news .home-news-carousel .carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3rem;
+  height: 5rem;
+  cursor: pointer;
+  z-index: 10;
+}
+.home-weekly-news .home-news-carousel .left-arrow {
+  left: 20rem;
+}
+.home-weekly-news .home-news-carousel .right-arrow {
+  right: 20rem;
+}
+
+.home-swjungdae {
+  margin: 4rem 0;
+  display: flex; /* Flexbox 활성화 */
+}
+
+.home-swjungdae-header {
+  flex: 3;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.home-swjungdae-content {
+  flex: 7;
+}
+
+.home-swjungdae-line {
+  width: 20rem;
+  height: 1px;
+  background-color: #000;
+  border: none;
+  margin-bottom: 2rem;
+}
+
+.home-swjungdae-title {
+  font-family: "RedHatDisplay", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #000;
+  margin-left: 5rem;
+  margin-bottom: 5rem;
+}
+
+.home-swjungdae-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 2rem;
+  margin-top: 5rem;
+}
+
+.swjungdae-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5rem;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* 부드러운 배경색 및 이동 효과 */
+}
+
+.swjungdae-item:hover {
+  transform: translateX(5px); /* 호버 시 약간 오른쪽으로 이동 */
+}
+
+.swjungdae-title {
+  font-size: 1rem;
+  font-weight: normal;
+  color: #333;
+  transition: color 0.3s ease; /* 글자색 부드러운 전환 */
+}
+
+.swjungdae-date {
+  font-size: 1rem;
+  color: #666;
+  transition: color 0.3s ease;
+}
+
+/* 호버 시 텍스트 색상 변화 */
+.swjungdae-item:hover .swjungdae-title {
+  color: #000; /* 제목이 진한 검정으로 */
+}
+
+.swjungdae-item:hover .swjungdae-date {
+  color: #333; /* 날짜가 약간 더 진하게 */
+}
+
+.home-swjungdae-more {
+  text-align: right;
+  margin-right: 2rem;
+}
+
+.home-swjungdae-readmore {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+  text-decoration: none;
+  transition: color 0.3s ease, border-color 0.3s ease; /* 부드러운 효과 추가 */
+}
+
+/* 호버 시 read more 스타일 변화 */
+.home-swjungdae-readmore:hover {
+  color: #555; /* 텍스트 색상 회색으로 변경 */
+  border-color: #555; /* 밑줄 색상 회색으로 변경 */
+  text-decoration: none;
+  transform: scale(1.05); /* 약간 확대 */
+}
+
+/* Header */
+.header {
+  position: fixed; /* 고정 위치 */
+  top: 0; /* 화면 상단 */
+  width: 100%; /* 화면 전체 너비 */
+  z-index: 1000; /* 다른 요소보다 위에 위치 */
+  background-color: #ffffff; /* 흰색 배경 */
+  padding: 0.5rem 2rem; /* 상하 좌우 여백 */
+  box-sizing: border-box; /* 패딩 포함한 높이 계산 */
+  display: flex; /* flexbox 활성화 */
+  justify-content: space-between; /* 로고와 내비게이션 사이 간격 확보 */
+  align-items: center; /* 수직 중앙 정렬 */
+  height: auto; /* 자동 높이 */
+}
+.header .header-logo a {
+  display: inline-block;
+}
+.header .header-logo a img {
+  width: 4rem; /* 원하는 로고 너비 */
+  height: auto; /* 비율 유지 */
+}
+.header .header-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+.header .header-nav ul li a {
+  font-size: 1rem;
+  color: #000;
+  text-decoration: none;
+  position: relative; /* 밑줄을 위한 기준 위치 설정 */
+}
+.header .header-nav ul li a:hover {
+  color: #7E7E7E;
+}
+.header .header-nav ul li a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px; /* 텍스트 아래에 밑줄 위치 */
+  width: 100%;
+  height: 1px;
+  background-color: #000; /* 밑줄 색상 */
+}
+.header .header-nav ul .login-btn {
+  font-weight: bold;
+}
+
+/* Footer */
+.footer {
+  background-color: #ffffff;
+  border-top: 1px solid #e0e0e0;
+  padding: 0;
+}
+.footer .footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0rem 3rem;
+}
+.footer .footer-container .footer-left {
+  width: 50%;
+  text-align: left;
+}
+.footer .footer-container .footer-left img {
+  width: 4rem;
+  height: auto;
+}
+.footer .footer-container .footer-left p {
+  font-size: 0.9rem;
+  color: #555;
+}
+.footer .footer-container .footer-divider {
+  width: 1px;
+  background-color: #e0e0e0;
+  height: 12rem; /* 고정 높이 */
+  margin: 0; /* 좌우 여백 */
+}
+.footer .footer-container .footer-right {
+  width: 50%;
+  display: flex;
+  justify-content: space-around; /* 컬럼 간격 조정 */
+  text-align: left;
+}
+.footer .footer-container .footer-right .footer-column h3 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.footer .footer-container .footer-right .footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+.footer .footer-container .footer-right .footer-column ul li {
+  margin: 0.5rem 0;
+}
+.footer .footer-container .footer-right .footer-column ul li a {
+  font-size: 0.9rem;
+  color: #010101;
+  text-decoration: none;
+}
+.footer .footer-container .footer-right .footer-column ul li a:hover {
+  color: #7E7E7E;
+}
+.footer .footer-container .footer-right .footer-column ul li img {
+  width: 20px; /* 아이콘 크기 */
+  height: auto;
+}
+.footer .footer-bottom {
+  border-top: 1px solid #e0e0e0;
+  padding-top: 1rem;
+  text-align: center; /* 중앙 정렬 */
+}
+.footer .footer-bottom p {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin: 0; /* 추가 여백 제거 */
+}
+
+/* 전체 레이아웃 */
+.contents-page {
+  display: flex;
+  height: 100vh; /* 헤더 제외 전체 높이 */
+}
+
+/* 콘텐츠 영역 */
+.inner-content {
+  width: 65rem; /* 콘텐츠 영역 너비 복원 */
+  padding-top: 2rem;
+  overflow: hidden;
+}
+
+/* 사이드바 (목차) */
+.contents-nav {
+  width: 35%; /* 목차 영역 너비 */
+  padding: 10rem 2rem 2rem; /* 기존 스타일 복원 */
+  background-color: #fff;
+}
+
+.contents-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contents-nav li {
+  margin-bottom: 1rem;
+  font-family: "RedHatDisplay", sans-serif; /* 지정 폰트 */
+  font-weight: 600;
+}
+
+.contents-item {
+  display: inline-block; /* inline-block으로 변경해 글씨 크기에 맞춤 */
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: #000;
+  padding: 0.2rem 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  position: relative;
+}
+
+.contents-item::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0.1rem; /* 글씨 바로 아래 */
+  width: 0; /* 초기 상태 */
+  height: 1px; /* 밑줄 두께 */
+  background-color: #000; /* 밑줄 색상 */
+  transition: width 0.5s ease; /* 부드러운 애니메이션 */
+}
+
+/* 호버 상태와 활성 상태에서 밑줄 표시 */
+.contents-item:hover::after,
+.contents-item.active::after {
+  width: 100%; /* 글씨 크기에 맞게 */
+}
+
+/* Main styling */
+.main-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin-top: 5rem;
+}
+
+.breadcrumb {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 1rem;
+}
+
+.breadcrumb a {
+  text-decoration: none;
+  color: #4285F4;
+}
+
+.detail-header img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.detail-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.detail-meta {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.detail-meta p {
+  margin: 0.5rem 0;
+}
+
+.detail-content h3 {
+  font-size: 1.5rem;
+  margin: 1.5rem 0 1rem;
+}
+
+.detail-content p {
+  margin-bottom: 1rem;
+}
+
+.detail-content ul {
+  margin-left: 1.5rem;
+  list-style-type: disc;
+}
+
+.login-container {
+  display: flex;
+  height: 100vh;
+}
+
+.logo-container h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.logo-container p {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+.login-left {
+  flex: 1;
+  height: 100vh; /* 화면 전체 높이 */
+  background: linear-gradient(135deg, #507FBA, #8EBCF3); /* 그라데이션 배경 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white; /* 글씨 색상 */
+}
+
+.login-left-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem; /* 로고와 텍스트 간격 */
+}
+
+.haru-logo {
+  width: 5rem; /* 로고 크기 */
+  height: auto;
+}
+
+.login-description {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: white; /* 설명 텍스트 색상 */
+}
+
+.login-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.login-form {
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.login-form h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.login-form p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+p a {
+  color: #000; /* 링크 색상을 검정으로 설정 */
+  text-decoration: none; /* 밑줄 제거 */
+  font-weight: normal; /* 기본 텍스트와 동일한 굵기 */
+}
+
+p a:hover {
+  text-decoration: underline; /* 호버 시 밑줄 추가 */
+}
+
+.google-login {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+.google-login img {
+  width: 100%; /* SVG 이미지를 버튼 크기에 맞게 조정 */
+  height: auto;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #ccc;
+  margin: 0 0.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+label {
+  font-size: 0.8rem;
+  color: #555;
+  font-weight: bold;
+  text-align: left; /* 왼쪽 정렬 */
+  margin-top: 1rem;
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.5rem 0;
+  font-size: 0.8rem;
+  border: none;
+  border-bottom: 1px solid #ddd; /* 기본 밑줄 */
+  transition: border-color 0.3s ease, border-width 0.3s ease;
+}
+.input-field:focus {
+  border-color: #000; /* 포커스 시 밑줄 색상 변경 */
+  border-width: 2px; /* 밑줄 두께 증가 */
+  outline: none; /* 기본 포커스 아웃라인 제거 */
+}
+.input-field::placeholder {
+  color: #aaa; /* 플레이스홀더 색상 */
+}
+
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.password-container .password-icon {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+.toggle-password {
+  background: none; /* 버튼의 기본 배경 제거 */
+  border: none; /* 버튼의 기본 테두리 제거 */
+  padding: 0; /* 불필요한 여백 제거 */
+  cursor: pointer; /* 클릭 가능한 버튼처럼 보이도록 설정 */
+  display: flex; /* 아이콘 정렬을 위한 설정 */
+  align-items: center;
+  justify-content: center;
+  width: auto; /* 버튼 크기를 아이콘 크기에 맞춤 */
+  height: auto; /* 버튼 크기를 아이콘 크기에 맞춤 */
+}
+
+.auto-login {
+  display: flex;
+  align-items: center; /* 수직 정렬 */
+  gap: 0.5rem; /* 체크박스와 텍스트 사이 간격 */
+}
+
+.auto-login label {
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: #555;
+  line-height: 1; /* 텍스트 줄 높이를 줄임 */
+  margin: 0; /* 기본 여백 제거 */
+}
+
+.auto-login input[type=checkbox] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  margin: 0; /* 기본 여백 제거 */
+  vertical-align: middle; /* 체크박스와 텍스트를 수직 정렬 */
+}
+
+.login-button {
+  background-color: #4285F4;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 2rem;
+}
+.login-button:hover {
+  background-color: #357ae8;
+}
+
+.links {
+  display: flex; /* 수평 정렬 */
+  justify-content: center; /* 가운데 정렬 */
+  gap: 1.5rem; /* 링크 간격 */
+  margin-top: 1rem; /* 위와의 간격 */
+}
+
+.links a {
+  font-size: 0.8rem; /* 텍스트 크기 */
+  font-weight: 200;
+  color: #ccc; /* 링크 색상 */
+  text-decoration: none; /* 밑줄 제거 */
+  font-weight: bold; /* 강조 */
+  transition: color 0.3s ease; /* 호버 효과를 위한 트랜지션 */
+}
+
+.links a:hover {
+  color: #357ae8; /* 호버 시 색상 변화 */
+  text-decoration: underline; /* 호버 시 밑줄 추가 */
+}
+
+.signup-container {
+  display: flex;
+  height: 100vh;
+}
+
+.signup-left {
+  flex: 1;
+  height: 100vh;
+  background: linear-gradient(135deg, #507FBA, #8EBCF3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.signup-left-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.haru-logo {
+  width: 5rem;
+  height: auto;
+}
+
+.signup-description {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: white;
+}
+
+.signup-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.signup-form {
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.signup-form h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.signup-form p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+p a {
+  color: #000;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+label {
+  font-size: 0.8rem;
+  color: #555;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1rem;
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.5rem 0;
+  font-size: 0.8rem;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  transition: border-color 0.3s ease, border-width 0.3s ease;
+}
+
+.input-field:focus {
+  border-color: #000;
+  border-width: 2px;
+  outline: none;
+}
+
+.input-field::placeholder {
+  color: #aaa;
+}
+
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-icon {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+.signup-button {
+  background-color: #4285F4;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.signup-button:hover {
+  background-color: #357ae8;
+}
+
+/* 약관 동의 섹션 */
+.terms-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 항목 간 간격 */
+  margin-top: 1.5rem;
+}
+
+.terms-item {
+  display: flex;
+  align-items: center; /* 수직 정렬 */
+  justify-content: flex-start; /* 전체적으로 왼쪽 정렬 */
+  gap: 0.5rem; /* 요소 간 간격 */
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* 체크박스와 텍스트 간 간격 */
+}
+
+.checkbox {
+  appearance: none; /* 기본 체크박스 스타일 제거 */
+  width: 20px;
+  height: 20px;
+  border: 2px solid #000; /* 검정 테두리 */
+  border-radius: 50%; /* 동그라미 모양 */
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  background-color: #fff; /* 배경 흰색 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox:checked {
+  background-color: #000; /* 선택 시 배경 검정색 */
+}
+
+.checkbox:checked::after {
+  content: "✓"; /* 체크 표시 */
+  color: #fff; /* 체크 표시 흰색 */
+  font-size: 1.2rem; /* 체크 표시 크기 */
+  font-weight: bold;
+  position: absolute;
+}
+
+label {
+  font-size: 0.9rem;
+  color: #555;
+  font-weight: normal;
+  line-height: 1; /* 텍스트 줄 높이 조정 */
+  margin: 0; /* 기본 여백 제거 */
+}
+
+label strong {
+  font-weight: bold;
+  color: #000;
+}
+
+.required {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.view-button {
+  background-color: #ccc;
+  color: #000;
+  border: 0px;
+  border-radius: 50rem;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: center;
+}
+
+.view-button:hover {
+  background-color: #eee;
+  color: #000;
+}
+
+.contents-economyPage {
+  display: flex;
+  height: 130vh; /* 헤더 제외 전체 높이 */
+}
+
+/* Weekly News Section */
+.weekly-news {
+  padding-right: 2rem;
+  padding-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.weekly-news-header {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.weekly-news-header h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.weekly-news-header span {
+  font-size: 0.8rem;
+  padding-left: 2rem;
+  color: #7D7D7D;
+  font-weight: bold;
+}
+
+.weekly-news-container {
+  display: flex;
+  gap: 2rem;
+}
+
+/* 오른쪽 Main News */
+.weekly-news-main {
+  flex: 1;
+  position: relative; /* 부모 요소 기준으로 자식 요소 위치 설정 */
+  width: 100%;
+  height: 15rem; /* 이미지 높이 설정 */
+}
+
+.weekly-news-image {
+  width: 100%;
+  height: 100%;
+  background-color: #e0e0e0; /* 배경색 */
+  border-radius: 8px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* 텍스트 오버레이 */
+.weekly-news-main-text {
+  position: absolute;
+  bottom: 1rem; /* 이미지 아래에서 1rem 떨어짐 */
+  left: 1rem; /* 이미지 왼쪽에서 1rem 떨어짐 */
+  color: #fff; /* 텍스트 색상: 흰색 */
+  z-index: 1; /* 텍스트를 이미지 위로 올림 */
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8); /* 텍스트에 그림자 추가 */
+}
+
+.weekly-news-main-text h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.weekly-news-main-text span {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  display: block;
+  color: #f0f0f0; /* 연한 흰색 */
+}
+
+/* Side News */
+/* 오른쪽 뉴스 리스트 */
+.weekly-news-side {
+  flex: 1; /* 동일 비율로 공간 차지 */
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* 항목 간 간격 */
+}
+
+.weekly-news-side-item {
+  display: flex;
+  flex-direction: column; /* 세로 배치 */
+  align-items: flex-start; /* 왼쪽 정렬 */
+  gap: 0.5rem; /* 제목과 날짜 간 간격 */
+  padding-left: 1rem; /* 선과 텍스트 간 간격 */
+  border-left: 1px solid #000; /* 왼쪽 선 추가 */
+}
+
+.weekly-news-side-item h4 {
+  margin: 0;
+  font-size: 1rem; /* 제목 크기 */
+  font-weight: bold;
+  color: #000; /* 제목 색상 */
+  line-height: 1.4;
+}
+
+.weekly-news-side-item span {
+  font-size: 0.9rem; /* 날짜 크기 */
+  color: #666; /* 날짜 색상 */
+}
+
+.weekly-news-side-item::before {
+  content: ""; /* 빈 요소로 선 추가 */
+  display: block;
+  width: 2px; /* 선의 너비 */
+  height: 100%; /* 선의 높이 */
+  background-color: #000; /* 선 색상 */
+}
+
+.economy-list {
+  padding-right: 2rem;
+}
+
+/* Economy Header */
+.economy-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Economy Title */
+.economy-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Economy News List */
+.economynews-list {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* Economy News Items */
+.economynews-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.economynews-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid #ddd;
+  gap: 1rem;
+}
+
+/* News Text Section */
+.economynews-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.economynews-title {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+}
+
+.economynews-keyword {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+/* News Date */
+.economynews-date {
+  font-size: 0.9rem;
+  color: #444;
+  white-space: nowrap;
+}
+
+/* Interview 리스트 */
+.interview-list {
+  max-height: 70vh;
+  flex-grow: 1; /* 리스트가 남은 공간을 차지 */
+  overflow-y: auto; /* 세로 스크롤 활성화 */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3열 레이아웃 */
+  gap: 1rem; /* 카드 간격 */
+  padding-right: 2rem;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+.interview-list::-webkit-scrollbar {
+  width: 8px;
+}
+.interview-list::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+/* 인터뷰 카드 */
+.interview-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* 카드 이미지 */
+.interview-image {
+  width: 20rem;
+  height: 20rem;
+  display: block;
+}
+
+/* 오버레이 */
+.interview-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.5rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+}
+
+/* 텍스트 스타일 */
+.interview-overlay h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  padding: 0 1rem;
+  font-weight: normal;
+  word-wrap: break-word; /* 긴 단어 줄바꿈 */
+  line-height: 1.4; /* 줄 간격 */
+  white-space: normal; /* 텍스트 줄바꿈 활성화 */
+  text-overflow: ellipsis; /* 넘치는 텍스트 처리 */
+  overflow: hidden;
+}
+
+.interview-overlay p {
+  margin: 0;
+  font-size: 1rem;
+  position: relative; /* 위치 조정 가능 */
+  text-align: center; /* 텍스트 가운데 정렬 */
+}
+
+.interview-overlay p::after {
+  content: "";
+  display: block;
+  width: 2rem; /* 텍스트 크기에 맞게 조정 */
+  height: 1px; /* 밑줄 두께 */
+  background-color: white; /* 밑줄 색상 */
+  margin: 4px auto 0; /* 가운데 정렬 및 간격 설정 */
+}
+
+.interview-overlay span {
+  margin: 0 auto; /* 가운데 정렬 */
+  font-size: 0.9rem;
+  color: #fff; /* 글씨 색상 */
+  background-color: #303030; /* 검은색 배경 */
+  padding: 0.2rem 0.5rem; /* 텍스트 크기에 맞는 여백 */
+  border-radius: 0.5rem; /* 둥근 모서리 */
+  display: inline-block; /* 텍스트 크기에 맞게 배경 크기 조정 */
+  line-height: 1; /* 줄 간격 */
+  max-width: fit-content; /* 텍스트 크기에 맞게 배경 폭 조정 */
+}
+
+.contents-moviePage {
+  display: flex;
+  height: 130vh; /* 헤더 제외 전체 높이 */
+}
+
+/* Editor's Choice Section */
+.editor-choice {
+  padding-right: 2rem;
+  padding-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.editor-choice-header {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.editor-choice-header h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.editor-choice-header span {
+  font-size: 0.8rem;
+  padding-left: 2rem;
+  color: #7D7D7D;
+  font-weight: bold;
+}
+
+.editor-choice-container {
+  display: flex;
+  gap: 2rem;
+  justify-content: start;
+}
+
+.editor-choice-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.movie-image {
+  width: 12rem;
+  height: 18rem;
+  object-fit: cover;
+}
+
+.movie-title {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+  text-align: center;
+}
+
+/* Movie List Section */
+.movie-list {
+  padding-right: 2rem;
+}
+
+.movie-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.movie-title-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.movie-news-list {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.movie-news-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.movie-news-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid #ddd;
+  gap: 1rem;
+}
+
+.movie-news-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.movie-news-title {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+}
+
+.movie-news-keyword {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.movie-news-date {
+  font-size: 0.9rem;
+  color: #444;
+  white-space: nowrap;
+}
+
+/* 헤더 (검색 및 정렬) */
+.labs-header {
+  display: flex;
+  flex-direction: column; /* 세로 정렬 */
+  align-items: flex-end; /* 오른쪽 정렬 유지 */
+  padding: 1rem 2rem;
+  background-color: #fff;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.labs-search-container {
+  position: relative;
+  width: 35%;
+}
+
+.labs-search-input {
+  width: 100%;
+  border: none;
+  border-bottom: 0.5px solid #000;
+  outline: none;
+  padding: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.labs-search-icon {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.labs-search-icon img {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* 정렬 */
+.labs-sort-container {
+  position: relative;
+}
+
+.labs-sort-btn {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* 정렬 옵션 컨테이너 */
+.labs-sort-options {
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  background: #fff; /* 흰색 배경 */
+  border: 1px solid #ccc; /* 경계선 추가 */
+  border-radius: 8px; /* 둥근 모서리 */
+  list-style: none; /* 기본 리스트 스타일 제거 */
+  padding: 0.5rem 0; /* 안쪽 여백 */
+  margin: 0; /* 바깥 여백 제거 */
+  display: none; /* 기본적으로 숨김 */
+  z-index: 1000; /* 우선순위 높게 설정 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+  width: 8rem; /* 일정한 너비 */
+}
+
+/* 활성화 상태 */
+.labs-sort-options.show {
+  display: block; /* 표시 */
+}
+
+/* 정렬 옵션 항목 */
+.labs-sort-options li {
+  padding: 0.5rem 1rem; /* 항목 내부 여백 */
+  cursor: pointer; /* 마우스 커서 표시 */
+  font-size: 1rem; /* 글씨 크기 */
+  color: #000; /* 글씨 색상 */
+  text-align: left; /* 텍스트 왼쪽 정렬 */
+  white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+}
+
+/* 호버 효과 */
+.labs-sort-options li:hover {
+  background-color: #f0f0f0; /* 호버 시 배경색 */
+}
+
+/* LAB 리스트 */
+.labs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 70vh;
+  overflow-y: auto;
+  padding-right: 2rem;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+.labs-list::-webkit-scrollbar {
+  width: 8px;
+}
+.labs-list::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+/* LAB 카드 */
+.labs-card {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 1rem 0;
+  gap: 1rem;
+}
+
+.labs-card-image {
+  width: 8rem;
+  height: 8rem;
+  object-fit: contain;
+}
+
+.labs-card-divider {
+  width: 1px; /* 선의 두께 */
+  height: 8rem; /* 선의 높이 */
+  background-color: #000; /* 선의 색상 */
+  margin: 0 0.5rem; /* 이미지와 내용 사이 간격 */
+}
+
+.labs-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.labs-card-content p {
+  margin: 0;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.labs-card-content h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000;
+}
+
+.labs-card-content h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: normal;
+  color: #000;
+}
+
+.labs-tags {
+  color: #888;
+  font-size: 0.85rem;
+}
+
+/* Award 리스트 */
+.award-list {
+  max-height: 70vh;
+  flex-grow: 1; /* 리스트가 남은 공간을 차지 */
+  overflow-y: auto; /* 세로 스크롤 활성화 */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3열 레이아웃 */
+  gap: 1rem; /* 카드 간격 */
+  padding-right: 2rem;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+.award-list::-webkit-scrollbar {
+  width: 8px;
+}
+.award-list::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+/* Award 카드 */
+.award-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* 카드 이미지 */
+.award-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: brightness(40%); /* 어두운 효과 */
+}
+
+/* 오버레이 */
+.award-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 90%;
+  padding: 0.5rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: start;
+}
+
+/* 텍스트 스타일 */
+.award-overlay h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: normal;
+  word-wrap: break-word; /* 긴 단어 줄바꿈 */
+  line-height: 1.4; /* 줄 간격 */
+  white-space: normal; /* 텍스트 줄바꿈 활성화 */
+  text-overflow: ellipsis; /* 넘치는 텍스트 처리 */
+  overflow: hidden;
+}
+
+.award-overlay p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.award-overlay span {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #fbc02d; /* 강조 색상 */
+}
+
+/* SW 리스트 스타일 */
+.sw-list {
+  padding: 1rem 2rem;
+  max-height: 70vh; /* 스크롤 가능하도록 설정 */
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+
+.sw-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sw-list::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+/* 리스트 아이템 */
+.sw-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* 리스트 간격 */
+}
+
+.sw-item {
+  display: flex;
+  justify-content: space-between; /* 제목과 날짜를 양쪽 정렬 */
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ccc; /* 하단 경계선 */
+  font-size: 1rem;
+}
+
+.sw-title {
+  flex: 1;
+  text-overflow: ellipsis; /* 텍스트가 길 경우 생략 표시 */
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.sw-date {
+  color: #888;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+/* 페이징 스타일 */
+.pagination {
+  display: flex;
+  justify-content: end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  align-items: center;
+}
+
+.page-item, .page-arrow {
+  padding: 0.5rem;
+  border: none; /* 테두리 제거 */
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: #000;
+  background: none;
+  position: relative;
+}
+
+.page-item.active {
+  font-weight: bold;
+}
+
+.page-item.active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px; /* 밑줄 위치 */
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #000; /* 밑줄 색상 */
+}
+
+.page-arrow {
+  font-size: 1.2rem; /* 화살표 크기 */
+  color: #888; /* 화살표 색상 */
+}
+
+.page-arrow:hover {
+  color: #000; /* 호버 시 색상 변경 */
+}
+
+/* 사이드바 (목차) */
+.newsletter-contents-nav {
+  width: 50%; /* 목차 영역 너비 */
+  padding: 10rem 2rem 2rem; /* 기존 스타일 복원 */
+  background-color: #fff;
+}
+
+/* 콘텐츠 영역 */
+.newsletter-inner-content {
+  width: 50%; /* 콘텐츠 영역 너비 복원 */
+  padding-top: 2rem;
+  overflow: hidden;
+}
+
+/* Subscribe Section */
+.subscribe-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 50%;
+  padding: 0 2rem;
+}
+
+.subscribe-container h3 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.subscribe-container p {
+  font-size: 0.8rem;
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.subscribe-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.input-container {
+  position: relative;
+  width: 100%;
+}
+
+.subscribe-input {
+  width: 100%;
+  padding: 0.5rem 0;
+  font-size: 1rem;
+  border: none;
+  border-bottom: 1px solid #ccc; /* 기본 하단 선 */
+  background: none;
+  color: #333;
+  outline: none;
+}
+
+.subscribe-input::placeholder {
+  color: #bbb; /* Placeholder 색상 */
+  font-size: 1.5rem;
+  font-family: "RedHatDisplay", sans-serif; /* 지정 폰트 */
+  font-weight: 100;
+}
+
+.subscribe-input:focus {
+  border-bottom: 1px solid #000; /* 포커스 시 하단 선 */
+}
+
+.subscribe-input:focus::placeholder {
+  color: transparent; /* 포커스 시 placeholder 숨김 */
+}
+
+.subscribe-agreement {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.subscribe-checkbox {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: black; /* 체크박스 색상을 검정으로 변경 */
+}
+
+.subscribe-button {
+  padding: 0.3rem 0.5rem;
+  background-color: #000;
+  color: #fff;
+  font-size: 1.5rem;
+  font-family: "RedHatDisplay", sans-serif; /* 지정 폰트 */
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.subscribe-button:hover {
+  background-color: #333;
+}
+
+.newsletter-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 70vh;
+  overflow-y: auto;
+  padding-right: 2rem;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+.newsletter-list::-webkit-scrollbar {
+  width: 8px;
+}
+.newsletter-list::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+/* 뉴스레터 카드 */
+.newsletter-card {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 1rem 0;
+  gap: 1rem;
+}
+
+.newsletter-card-image {
+  width: 8rem;
+  height: 8rem;
+  object-fit: contain;
+}
+
+.newsletter-card-divider {
+  width: 1px; /* 선의 두께 */
+  height: 8rem; /* 선의 높이 */
+  background-color: #000; /* 선의 색상 */
+  margin: 0 0.5rem; /* 이미지와 내용 사이 간격 */
+}
+
+.newsletter-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.newsletter-card-content p {
+  margin: 0;
+  color: #000;
+  font-size: 0.9rem;
+}
+
+.newsletter-card-content h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #000;
+}
+
+.newsletter-card-content h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #919191;
+}
+
+.newsletter-tags {
+  font-size: 0.85rem;
+  color: #fff !important; /* 글씨 색상 */
+  background-color: #000; /* 검은색 배경 */
+  padding: 0.2rem 0.5rem; /* 텍스트 크기에 맞는 여백 */
+  border-radius: 50rem; /* 둥근 모서리 */
+  margin: 0 auto; /* 가운데 정렬 */
+  display: inline-block; /* 텍스트 크기에 맞게 배경 크기 조정 */
+  line-height: 1; /* 줄 간격 */
+  max-width: fit-content; /* 텍스트 크기에 맞게 배경 폭 조정 */
+}
+
+.goods-list {
+  max-height: 70vh;
+  flex-grow: 1; /* 리스트가 남은 공간을 차지 */
+  overflow-y: auto; /* 세로 스크롤 활성화 */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3열 레이아웃 */
+  gap: 1rem; /* 카드 간격 */
+  justify-items: end;
+  padding-right: 2rem;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+
+.goods-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* 텍스트 왼쪽 정렬 */
+  text-align: left; /* 텍스트 왼쪽 정렬 */
+  gap: 0.5rem; /* 이미지와 텍스트 간 간격 */
+}
+
+.goods-image {
+  width: 100%; /* 부모 요소 너비에 맞춤 */
+  height: auto;
+  display: flex;
+}
+
+.goods-image img {
+  max-width: 100%; /* 이미지가 부모 요소를 넘지 않도록 설정 */
+  height: auto;
+  object-fit: contain; /* 이미지 비율 유지 */
+}
+
+.goods-name {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.goods-price {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*# sourceMappingURL=styles.css.map */

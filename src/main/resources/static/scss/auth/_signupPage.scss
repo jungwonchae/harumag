@@ -1,0 +1,220 @@
+.signup-container {
+    display: flex;
+    height: 100vh;
+}
+
+.signup-left {
+    flex: 1;
+    height: 100vh;
+    background: linear-gradient(135deg, #507FBA, #8EBCF3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.signup-left-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+
+.haru-logo {
+    width: 5rem;
+    height: auto;
+}
+
+.signup-description {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: white;
+}
+
+.signup-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.signup-form {
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.signup-form h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.signup-form p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+p a {
+    color: #000;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+label {
+    font-size: 0.8rem;
+    color: #555;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 1rem;
+}
+
+.input-field {
+    width: 100%;
+    padding: 0.5rem 0;
+    font-size: 0.8rem;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    transition: border-color 0.3s ease, border-width 0.3s ease;
+}
+
+.input-field:focus {
+    border-color: #000;
+    border-width: 2px;
+    outline: none;
+}
+
+.input-field::placeholder {
+    color: #aaa;
+}
+
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-icon {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+}
+
+.signup-button {
+    background-color: #4285F4;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.signup-button:hover {
+    background-color: #357ae8;
+}
+
+
+/* 약관 동의 섹션 */
+.terms-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* 항목 간 간격 */
+    margin-top: 1.5rem;
+    
+}
+
+.terms-item {
+    display: flex;
+    align-items: center; /* 수직 정렬 */
+    justify-content: flex-start; /* 전체적으로 왼쪽 정렬 */
+    gap: 0.5rem; /* 요소 간 간격 */
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* 체크박스와 텍스트 간 간격 */
+}
+
+.checkbox {
+    appearance: none; /* 기본 체크박스 스타일 제거 */
+    width: 20px;
+    height: 20px;
+    border: 2px solid #000; /* 검정 테두리 */
+    border-radius: 50%; /* 동그라미 모양 */
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    background-color: #fff; /* 배경 흰색 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkbox:checked {
+    background-color: #000; /* 선택 시 배경 검정색 */
+}
+
+.checkbox:checked::after {
+    content: "✓"; /* 체크 표시 */
+    color: #fff; /* 체크 표시 흰색 */
+    font-size: 1.2rem; /* 체크 표시 크기 */
+    font-weight: bold;
+    position: absolute;
+}
+
+
+label {
+    font-size: 0.9rem;
+    color: #555;
+    font-weight: normal;
+    line-height: 1; /* 텍스트 줄 높이 조정 */
+    margin: 0; /* 기본 여백 제거 */
+}
+
+label strong {
+    font-weight: bold;
+    color: #000;
+}
+
+.required {
+    font-size: 0.8rem;
+    color: #999;
+}
+
+.view-button {
+    background-color: #ccc;
+    color: #000;
+    border: 0px;
+    border-radius: 50rem;
+    padding: 0.2rem 0.4rem;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-align: center;
+}
+
+.view-button:hover {
+    background-color: #eee;
+    color: #000;
+}

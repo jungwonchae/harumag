@@ -1,0 +1,89 @@
+/* Footer */
+.footer {
+    background-color: #ffffff;
+    border-top: 1px solid #e0e0e0;
+    padding: 0;
+
+    .footer-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0rem 3rem;
+
+        .footer-left {
+            width: 50%;
+            text-align: left;
+
+            img {
+                width: 4rem;
+                height: auto;
+            }
+
+            p {
+                font-size: 0.9rem;
+                color: #555;
+            }
+        }
+
+        .footer-divider {
+            width: 1px;
+            background-color: #e0e0e0;
+            height: 12rem; /* 고정 높이 */
+            margin: 0; /* 좌우 여백 */
+        }
+        
+
+        .footer-right {
+            width: 50%;
+            display: flex;
+            justify-content: space-around; /* 컬럼 간격 조정 */
+            text-align: left;
+
+            .footer-column {
+                h3 {
+                    font-size: 1rem;
+                    font-weight: bold;
+                    margin-bottom: 0.5rem;
+                }
+
+                ul {
+                    list-style: none;
+                    padding: 0;
+
+                    li {
+                        margin: 0.5rem 0;
+
+                        a {
+                            font-size: 0.9rem;
+                            color: #010101;
+                            text-decoration: none;
+
+                            &:hover {
+                                color: #7E7E7E;
+                            }
+                        }
+
+                        img {
+                            width: 20px; /* 아이콘 크기 */
+                            height: auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .footer-bottom {
+        border-top: 1px solid #e0e0e0;
+        padding-top: 1rem;
+        text-align: center; /* 중앙 정렬 */
+    
+        p {
+            font-size: 0.8rem;
+            color: #aaa;
+            margin: 0; /* 추가 여백 제거 */
+        }
+    }
+}

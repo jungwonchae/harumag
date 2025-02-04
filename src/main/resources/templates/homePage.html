@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haru Magazine</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-logo">
+            <a href="/pages/homePage.html">
+                <img src="/images/haru_logo.svg" alt="HARU Logo">
+            </a>
+        </div>        
+        <nav class="header-nav">
+            <ul>
+                <li><a href="/pages/lab/labsPage.html">lab</a></li>
+                <li><a href="/pages/news/awardPage.html">news</a></li>
+                <li><a href="/pages/articles/interviewPage.html">articles</a></li>
+                <li><a href="/pages/newsletter/newsletterPage.html">newsletter</a></li>
+                <li><a href="/pages/shop/goodsPage.html">shop</a></li>
+                <li><a href="/pages/auth/loginPage.html" class="login-btn">Log In</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Section1 애니메이션 -->
+    <section class="home-section1">
+        <div class="home-image-container">
+            <img src="/images/home_img.svg" alt="Home Image" class="home-image">
+            <div class="home-text-container">
+                <h1 class="home-title">HARU</h1>
+                <p class="home-subtitle">소중한 하루를 만드는 정보와 이야기를 전하는 온라인 매거진</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 스크롤을 위한 장치 -->
+    <section class="content-section">
+        <h2>Scroll to explore more!</h2>
+        <p>여기에 추가적인 콘텐츠를 넣을 수 있습니다.</p>
+    </section>
+
+    <!-- Section2 매거진 -->
+    <section class="home-section2 hidden-section">
+        <div class="home-section2-container">
+            <h2 class="home-section2-title">Monthly Newsletter</h2>
+            <img src="/images/haru_line.svg" alt="Line Divider" class="home-section2-divider">
+            <div class="home-section2-content">
+                <h3 class="home-section2-subtitle">혁신을 이끄는 리더, 홍길동의 경영 철학</h3>
+                <p class="home-section2-description">
+                    "더 나은 세상을 만드는 기술"이라는 비전을 바탕으로 한 창업 계기와 위기 극복 경험.
+                </p>
+                <ul class="home-section2-list">
+                    <li>주요 경제 뉴스 TOP 5</li>
+                    <li>이번 달 소중대 소식</li>
+                    <li>하루 코너: 일상 속 영감과 행복을 위한 소소한 이야기</li>
+                </ul>
+            </div>
+            <img src="/images/haru_line.svg" alt="Line Divider" class="home-section2-divider">
+            <button class="home-section2-button">Read More</button>
+        </div>
+    </section>
+
+
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const title = document.querySelector(".home-title");
+        const subtitle = document.querySelector(".home-subtitle");
+        const homeSection = document.querySelector(".home-section1"); // 섹션 1 선택
+        const section2 = document.querySelector(".home-section2"); // 섹션 2 선택
+        const contentSection = document.querySelector(".content-section"); // content-section 선택
+        const maxScroll = 300; // 애니메이션 스크롤 거리
+        let animationCompleted = false; // 애니메이션 완료 여부
+        let contentRemoved = false; // contentSection이 제거되었는지 여부
+
+        // 초기 상태 설정
+        title.style.opacity = 1; // HARU는 처음에 보임
+        title.style.transform = "translateY(0px) scale(1)"; // 초기 크기와 위치
+        subtitle.style.opacity = 0; // 표어는 초기엔 숨김
+        subtitle.style.color = "rgba(255, 255, 255, 0)"; // 초기엔 투명
+
+        // 스크롤 이벤트
+        window.addEventListener("scroll", () => {
+            const scrollY = window.scrollY;
+            const progress = Math.min(scrollY / maxScroll, 1); // 진행 계산 (0 ~ 1)
+
+            if (scrollY <= 500) {
+                // 애니메이션 실행
+                animationCompleted = false; // 애니메이션 상태 초기화
+                homeSection.style.position = "fixed"; // 고정 위치로 복귀
+                homeSection.style.marginTop = "15rem";
+
+                // HARU 글씨 애니메이션
+                const scale = 1 - progress * 0.5; // 크기 줄이기
+                const translateY = -progress * 250; // 위로 이동
+                title.style.transform = `translateY(${translateY}px) scale(${scale})`;
+
+                // 표어 애니메이션
+                subtitle.style.opacity = progress; // 점점 보임
+                subtitle.style.color = `rgba(255, 255, 255, ${progress})`; // 점점 하얀색
+
+                // 스크롤 숨기기
+                document.documentElement.classList.add("hide-scrollbar");
+
+                // contentSection이 제거된 경우 다시 추가
+                if (contentRemoved) {
+                    document.body.insertBefore(contentSection, section2);
+                    contentRemoved = false;
+                    console.log("content-section added back");
+                }
+
+                // 섹션 2 숨김 유지
+                section2.classList.add("hidden-section");
+            } else if (!animationCompleted && scrollY > 500) {
+                // 애니메이션 완료 및 고정 해제
+                animationCompleted = true; // 애니메이션 완료 상태
+                homeSection.style.position = "relative"; // 고정 해제
+                homeSection.style.marginTop = "46rem";
+
+                // 스크롤 다시 보이기
+                document.documentElement.classList.remove("hide-scrollbar");
+
+                // 섹션 2 보이기
+                section2.classList.remove("hidden-section");
+                section2.classList.add("visible-section");
+
+                // content-section 제거
+                contentSection.remove();
+                contentRemoved = true;
+                console.log("content-section removed");
+            }
+        });
+    });
+
+    </script>
+
+    <!-- Section3 인터뷰-->
+    <section class="home-interview">
+        <div class="home-interview-toc">
+            <img src="/images/haru_line.svg" alt="Line Divider" class="home-interview-line">
+            <h2 class="home-interview-interview">INTERVIEW</h2>
+        </div>    
+        <div class="home-interview-container">
+            <!-- 인터뷰 카드가 여기에 동적으로 삽입됩니다 -->
+        </div>
+    </section>
+    
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const interviewData = [
+                {
+                    id: 1,
+                    date: "Oct 05, 2024",
+                    vol: "Vol.1",
+                    title: "혁신을 이끄는 리더, 홍길동의 경영 철학",
+                    summary: "지속 가능한 성장을 이루기 위해 혁신에 투자하며, 글로벌 시장에서 인정받는 동시에 사회적 책임을 다하는 기업으로 나아가겠다는 포부가 느껴지는 인터뷰.",
+                    image: "/images/home_interview1.svg"
+                },
+                {
+                    id: 2,
+                    date: "Oct 05, 2024",
+                    vol: "Vol.2",
+                    title: "열정과 도전으로 빛난 수상 학생, 김철수의 이야기",
+                    summary: "지속 가능한 성장을 이루기 위해 혁신에 투자하며, 글로벌 시장에서 인정받는 동시에 사회적 책임을 다하는 학생이다.",
+                    image: "/images/home_interview2.svg"
+                },
+                {
+                    id: 3,
+                    date: "Oct 05, 2024",
+                    vol: "Vol.3",
+                    title: "열정과 도전으로 빛난 수상 학생, 김철수의 이야기",
+                    summary: "지속 가능한 성장을 이루기 위해 혁신에 투자하며, 글로벌 시장에서 인정받는 동시에 사회적 책임을 다하는 학생이다.",
+                    image: "/images/home_interview2.svg"
+                }
+            ];
+    
+            const container = document.querySelector(".home-interview-container");
+    
+            // 인터뷰 데이터를 카드로 렌더링
+            interviewData.forEach((item) => {
+                const card = `
+                    <div class="home-interview-card">
+                        <img src="${item.image}" alt="${item.title}" class="home-interview-image" />
+                        <div class="home-interview-content">
+                            <p class="home-interview-meta">${item.date} | ${item.vol}</p>
+                            <h3 class="home-interview-title">${item.title}</h3>
+                            <p class="home-interview-summary">${item.summary}</p>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += card;
+            });
+        });
+    </script>
+    
+
+    <!-- Section4 위클리뉴스-->
+<!-- Section4 위클리뉴스 -->
+<section class="home-weekly-news">
+    <div class="home-weekly-header">
+        <img src="/images/haru_line.svg" alt="Line Divider" class="home-weekly-line">
+        <h2 class="home-weekly-title">WEEKLY NEWS</h2>
+    </div>
+    <div class="home-news-carousel">
+        <img src="/images/haru_arrow_left.svg" alt="Left Arrow" class="carousel-arrow left-arrow" />
+        <div class="carousel-container">
+            <!-- 뉴스 카드가 동적으로 추가됩니다 -->
+        </div>
+        <img src="/images/haru_arrow_right.svg" alt="Right Arrow" class="carousel-arrow right-arrow" />
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const newsData = [
+            {
+                id: 1,
+                title: "미국 연준, 금리 인상 중단 시사... 세계 경제 영향은?",
+                date: "2025-01-03",
+                image: "/images/home_news.svg",
+            },
+            {
+                id: 2,
+                title: "미국 연준, 금리 인상 중단 시사... 세계 경제 영향은?",
+                date: "2025-01-03",
+                image: "/images/home_news.svg",
+            },
+            {
+                id: 3,
+                title: "미국 연준, 금리 인상 중단 시사... 세계 경제 영향은?",
+                date: "2025-01-03",
+                image: "/images/home_news.svg",
+            },
+        ];
+
+        const container = document.querySelector(".carousel-container");
+        const leftArrow = document.querySelector(".left-arrow");
+        const rightArrow = document.querySelector(".right-arrow");
+
+        // 뉴스 카드 생성
+        newsData.forEach((news) => {
+            const card = `
+                <div class="news-card">
+                    <img src="${news.image}" alt="${news.title}" class="news-image" />
+                    <div class="news-content">
+                        <h3 class="news-title">${news.title}</h3>
+                        <p class="news-date">${news.date}</p>
+                    </div>
+                </div>
+            `;
+            container.innerHTML += card;
+        });
+
+        let currentIndex = 0;
+
+        const showSlide = (index) => {
+            const cards = document.querySelectorAll(".news-card");
+            cards.forEach((card, i) => {
+                card.style.transform = `translateX(${(i - index) * 10}%)`;
+            });
+        };
+
+        // const nextSlide = () => {
+        //     currentIndex = (currentIndex + 1) % newsData.length;
+        //     showSlide(currentIndex);
+        // };
+
+        // const prevSlide = () => {
+        //     currentIndex = (currentIndex - 1 + newsData.length) % newsData.length;
+        //     showSlide(currentIndex);
+        // };
+
+        // 초기 슬라이드 설정
+        showSlide(currentIndex);
+
+        // 화살표 클릭 이벤트
+        rightArrow.addEventListener("click", nextSlide);
+        leftArrow.addEventListener("click", prevSlide);
+
+        // 자동 슬라이드
+        //setInterval(nextSlide, 5000); // 5초마다 자동 전환
+    });
+</script>
+
+
+    <!-- Section5 소중대-->
+    <section class="home-swjungdae">
+        <div class="home-swjungdae-header">
+            <img src="/images/haru_line.svg" alt="Line Divider" class="home-swjungdae-line">
+            <h2 class="home-swjungdae-title">SW중심대학</h2>
+        </div>
+        <div class="home-swjungdae-content">
+            <div class="home-swjungdae-list">
+                <!-- 리스트 아이템이 동적으로 추가됩니다 -->
+            </div>
+            <div class="home-swjungdae-more">
+                <a href="#" class="home-swjungdae-readmore">read more</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const swjungdaeData = [
+        {
+            id: 1,
+            title: "2025-1학기 경북대, 대가대 학점교류 참여학생 모집",
+            date: "2025-01-01"
+        },
+        {
+            id: 2,
+            title: "2025 상반기 ICT학점연계 프로젝트 국내 인턴십과정 학생 모집",
+            date: "2025-01-01"
+        },
+        {
+            id: 3,
+            title: "2025년 1학기 SW교육봉사단 모집_추가",
+            date: "2025-01-01"
+        },
+        {
+            id: 4,
+            title: "전산전자공학부 CEST 참가 신청(선착순)",
+            date: "2025-01-01"
+        },
+        {
+            id: 5,
+            title: "2025 동계 HAPPY한 SW전공캠프 명단 공지",
+            date: "2025-01-01"
+        }
+    ];
+
+    const listContainer = document.querySelector(".home-swjungdae-list");
+
+    swjungdaeData.forEach((item) => {
+        const listItem = `
+            <div class="swjungdae-item">
+                <span class="swjungdae-title">${item.title}</span>
+                <span class="swjungdae-date">${item.date}</span>
+            </div>
+        `;
+        listContainer.innerHTML += listItem;
+    });
+});
+    </script>
+
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="/images/haru_logo.svg" alt="HARU Logo">
+                <p>소중한 하루를 만드는 정보와 이야기를 전하는 온라인 매거진</p>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-right">
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Notice</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Subscribe</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="#"><img src="/images/insta_icon.svg" alt="Instagram"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2025. All rights reserved.</p>
+        </div>
+    </footer>
+    
+</body>
+</html>

@@ -1,0 +1,190 @@
+.contents-economyPage {
+    display: flex;
+    height: 130vh; /* 헤더 제외 전체 높이 */
+}
+
+//상단 부분 ---------------------------------------------------------
+/* Weekly News Section */
+.weekly-news {
+    padding-right: 2rem;
+    padding-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.weekly-news-header {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.weekly-news-header h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.weekly-news-header span {
+    font-size: 0.8rem;
+    padding-left: 2rem;
+    color: #7D7D7D;
+    font-weight: bold;
+}
+
+.weekly-news-container {
+    display: flex;
+    gap: 2rem;
+}
+
+/* 오른쪽 Main News */
+.weekly-news-main {
+    flex: 1;
+    position: relative; /* 부모 요소 기준으로 자식 요소 위치 설정 */
+    width: 100%;
+    height: 15rem; /* 이미지 높이 설정 */
+}
+
+.weekly-news-image {
+    width: 100%;
+    height: 100%;
+    background-color: #e0e0e0; /* 배경색 */
+    border-radius: 8px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* 텍스트 오버레이 */
+.weekly-news-main-text {
+    position: absolute;
+    bottom: 1rem; /* 이미지 아래에서 1rem 떨어짐 */
+    left: 1rem; /* 이미지 왼쪽에서 1rem 떨어짐 */
+    color: #fff; /* 텍스트 색상: 흰색 */
+    z-index: 1; /* 텍스트를 이미지 위로 올림 */
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8); /* 텍스트에 그림자 추가 */
+}
+
+.weekly-news-main-text h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.weekly-news-main-text span {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    display: block;
+    color: #f0f0f0; /* 연한 흰색 */
+}
+
+
+/* Side News */
+/* 오른쪽 뉴스 리스트 */
+.weekly-news-side {
+    flex: 1; /* 동일 비율로 공간 차지 */
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* 항목 간 간격 */
+}
+
+.weekly-news-side-item {
+    display: flex;
+    flex-direction: column; /* 세로 배치 */
+    align-items: flex-start; /* 왼쪽 정렬 */
+    gap: 0.5rem; /* 제목과 날짜 간 간격 */
+    padding-left: 1rem; /* 선과 텍스트 간 간격 */
+    border-left: 1px solid #000; /* 왼쪽 선 추가 */
+}
+
+.weekly-news-side-item h4 {
+    margin: 0;
+    font-size: 1rem; /* 제목 크기 */
+    font-weight: bold;
+    color: #000; /* 제목 색상 */
+    line-height: 1.4;
+}
+
+.weekly-news-side-item span {
+    font-size: 0.9rem; /* 날짜 크기 */
+    color: #666; /* 날짜 색상 */
+}
+
+
+.weekly-news-side-item::before {
+    content: ""; /* 빈 요소로 선 추가 */
+    display: block;
+    width: 2px; /* 선의 너비 */
+    height: 100%; /* 선의 높이 */
+    background-color: #000; /* 선 색상 */
+}
+
+
+
+//하단 부분 ---------------------------------------------------------
+.economy-list {
+    padding-right: 2rem;
+}
+
+/* Economy Header */
+.economy-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Economy Title */
+.economy-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+
+/* Economy News List */
+.economynews-list {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+/* Economy News Items */
+.economynews-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.economynews-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #ddd;
+    gap: 1rem;
+}
+
+/* News Text Section */
+.economynews-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.economynews-title {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000;
+}
+
+.economynews-keyword {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* News Date */
+.economynews-date {
+    font-size: 0.9rem;
+    color: #444;
+    white-space: nowrap;
+}

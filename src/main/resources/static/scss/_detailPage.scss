@@ -1,0 +1,55 @@
+/* Main styling */
+.main-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin-top: 5rem;
+}
+
+.breadcrumb {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 1rem;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: #4285F4;
+}
+
+.detail-header img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.detail-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 1rem 0;
+}
+
+.detail-meta {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+.detail-meta p {
+    margin: 0.5rem 0;
+}
+
+.detail-content h3 {
+    font-size: 1.5rem;
+    margin: 1.5rem 0 1rem;
+}
+
+.detail-content p {
+    margin-bottom: 1rem;
+}
+
+.detail-content ul {
+    margin-left: 1.5rem;
+    list-style-type: disc;
+}
