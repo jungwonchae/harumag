@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0/EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.harumag.mapper.LabsMapper">
+
+    <!---->
+    <select id="detail" parameterType="hashMap" resultType="com.example.harumag.dto.LabsDto$DetailResDto">
+        SELECT labs.id
+             ,labs.deleted
+             ,labs.process
+             ,labs.created_at as createdAt
+             ,labs.modified_at as modifiedAt
+
+             ,labs.prof
+             ,labs.logo
+             ,labs.cate
+             ,labs.name
+             ,labs.intro
+
+        FROM labs
+        WHERE labs.id = #{id}
+    </select>
+    <select id="list" parameterType="hashMap" resultType="com.example.harumag.dto.LabsDto$DetailResDto">
+        SELECT labs.id
+        FROM labs
+        WHERE labs.id is not NULL
+        <if test = "deleted != null and deleted !=''">AND labs.deleted = #{deleted}</if>
+        <if test = "process != null and process !=''">AND labs.process = #{process}</if>
+        <if test = "sdate != null and sdate !=''">AND labs.created_at >= CONCAT(#{sdate}, ' 00:00:00.000000')</if>
+        <if test = "fdate != null and fdate !=''">AND CONCAT(#{fdate}, ' 23:59:59.999999') >= labs.created_at</if>
+        <if test = "prof != null and prof !=''">AND labs.prof = #{prof}</if>
+        <if test = "logo != null and logo !=''">AND labs.logo = #{logo}</if>
+        <if test = "cate != null and cate !=''">AND labs.cate = #{cate}</if>
+        <if test = "name != null and name !=''">AND labs.name = #{name}</if>
+        <if test = "intro != null and intro !=''">AND labs.intro = #{intro}</if>
+        ORDER BY labs.created_at DESC
+    </select>
+
+    <select id="scrollList" parameterType="hashMap" resultType="com.example.harumag.dto.LabsDto$DetailResDto">
+        SELECT labs.id
+        FROM labs
+        WHERE labs.id is not NULL
+        <if test = "deleted != null and deleted !=''">AND labs.deleted = #{deleted}</if>
+        <if test = "process != null and process !=''">AND labs.process = #{process}</if>
+        <if test = "sdate != null and sdate !=''">AND labs.created_at >= CONCAT(#{sdate}, ' 00:00:00.000000')</if>
+        <if test = "fdate != null and fdate !=''">AND CONCAT(#{fdate}, ' 23:59:59.999999') >= labs.created_at</if>
+        <if test = "prof != null and prof !=''">AND labs.prof = #{prof}</if>
+        <if test = "logo != null and logo !=''">AND labs.logo = #{logo}</if>
+        <if test = "cate != null and cate !=''">AND labs.cate = #{cate}</if>
+        <if test = "name != null and name !=''">AND labs.name = #{name}</if>
+        <if test = "intro != null and intro !=''">AND labs.intro = #{intro}</if>
+
+        <if test = "orderby =='created_at'">
+            <if test = "orderway =='desc'">
+                <if test = "cursor != null and cursor !=''">AND STR_TO_DATE(#{cursor}, '%Y-%m-%d %H:%i:%s.%f') > labs.created_at </if>
+                ORDER BY labs.created_at DESC
+            </if>
+            <if test = "orderway =='asc'">
+                <if test = "cursor != null and cursor !=''">AND labs.created_at > STR_TO_DATE(#{cursor}, '%Y-%m-%d %H:%i:%s.%f')</if>
+                ORDER BY labs.created_at ASC
+            </if>
+        </if>
+        <if test = "orderby =='title'">
+            <if test = "orderway =='desc'">
+                <if test = "cursor != null and cursor !=''">AND #{cursor} > labs.name</if>
+                ORDER BY labs.name DESC
+            </if>
+            <if test = "orderway =='asc'">
+                <if test = "cursor != null and cursor !=''">AND labs.name > #{cursor}</if>
+                ORDER BY labs.name ASC
+            </if>
+        </if>
+        LIMIT 0, #{perpage}
+    </select>
+
+    <select id="pagedList" parameterType="hashMap" resultType="com.example.harumag.dto.LabsDto$DetailResDto">
+        SELECT labs.id
+        FROM labs
+        WHERE labs.id is not NULL
+        <if test = "deleted != null and deleted !=''">AND labs.deleted = #{deleted}</if>
+        <if test = "process != null and process !=''">AND labs.process = #{process}</if>
+        <if test = "sdate != null and sdate !=''">AND labs.created_at >= CONCAT(#{sdate}, ' 00:00:00.000000')</if>
+        <if test = "fdate != null and fdate !=''">AND CONCAT(#{fdate}, ' 23:59:59.999999') >= labs.created_at</if>
+        <if test = "startdate != null and startdate !=''">AND labs.startdate = #{startdate}</if>
+        <if test = "prof != null and prof !=''">AND labs.prof = #{prof}</if>
+        <if test = "logo != null and logo !=''">AND labs.logo = #{logo}</if>
+        <if test = "cate != null and cate !=''">AND labs.cate = #{cate}</if>
+        <if test = "name != null and name !=''">AND labs.name = #{name}</if>
+        <if test = "intro != null and intro !=''">AND labs.intro = #{intro}</if>
+
+        <if test = "orderby =='created_at'">ORDER BY labs.created_at </if>
+        <if test = "orderby =='title'">ORDER BY labs.title </if>
+        <if test = "orderway =='asc'">ASC</if>
+        <if test = "orderway =='desc'">DESC</if>
+        LIMIT #{offset}, #{perpage}
+    </select>
+    <select id="pagedListCount" parameterType="hashMap" resultType="Integer">
+        SELECT count(labs.id) as listsize
+        FROM labs
+        WHERE labs.id is not NULL
+        <if test = "deleted != null and deleted !=''">AND labs.deleted = #{deleted}</if>
+        <if test = "process != null and process !=''">AND labs.process = #{process}</if>
+        <if test = "sdate != null and sdate !=''">AND labs.created_at >= CONCAT(#{sdate}, ' 00:00:00.000000')</if>
+        <if test = "fdate != null and fdate !=''">AND CONCAT(#{fdate}, ' 23:59:59.999999') >= labs.created_at</if>
+        <if test = "startdate != null and startdate !=''">AND labs.startdate = #{startdate}</if>
+        <if test = "prof != null and prof !=''">AND labs.prof = #{prof}</if>
+        <if test = "logo != null and logo !=''">AND labs.logo = #{logo}</if>
+        <if test = "cate != null and cate !=''">AND labs.cate = #{cate}</if>
+        <if test = "name != null and name !=''">AND labs.name = #{name}</if>
+        <if test = "intro != null and intro !=''">AND labs.intro = #{intro}</if>
+    </select>
+
+</mapper>
