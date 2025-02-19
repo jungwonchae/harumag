@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <head th:replace="~{@{includes/admin/head}}"></head>
+</head>
+<body>
+
+<div id="wrapper">
+    <body th:replace="~{@{includes/admin/nav}}"></body>
+    <script>
+        $(".sidemenu_li_labs").addClass("active");
+    </script>
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        <body th:replace="~{@{includes/admin/navbar_top}}"></body>
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-10">
+                <h2>LABs 신규</h2>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/admin">Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a>글 모음</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="/labs/admin_labsPage_list">LABs 목록</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        <strong>LABs 신규</strong>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-lg-2">
+            </div>
+        </div>
+
+        <div class="animated fadeInRight" style="padding-top:12.5px;padding-bottom:0px;">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox-title">
+                        <h5>신규 등록</h5>
+                    </div>
+                    <div class="ibox-content" style="padding-bottom:0.1px;">
+                        <div class="form-group row">
+
+                            <label class="col-sm-2 col-form-label">*교수님</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="input_required form-control m-b" id="create_labs_professor" keyword="prof" placeholder="교수님명을 입력하세요" errormsg="필수값입니다."/>
+                            </div>
+                            <label class="col-sm-6"></label>
+
+                            <label class="col-sm-2 col-form-label">*랩실명</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="input_required form-control m-b" id="create_labs_name" keyword="name" placeholder="랩실명을 입력하세요" errormsg="필수값입니다."/>
+                            </div>
+                            <label class="col-sm-6"></label>
+
+                            <label class="col-sm-2 col-form-label">*카테고리</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="input_required form-control m-b" id="create_labs_cate" keyword="cate" placeholder="카테고리를 입력하세요" errormsg="필수값입니다."/>
+                            </div>
+                            <label class="col-sm-6"></label>
+
+                            <label class="col-sm-2 col-form-label">*랩실 소개</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control m-b" id="create_labs_intro" keyword="content" onchange="listener_maxlength_check(this, 2000);" rows="4" placeholder="내용을 입력하세요"></textarea>
+                            </div>
+                            <label class="col-sm-2 col-form-label">대표사진</label>
+                            <div class="d-flex align-items-center">
+                                <input class="hide" type="file" id="img_labs_img" onchange="readInputFile(this)"/>
+                                <button class="btn btn-sm btn-default" onclick='$("#img_labs_img").trigger("click")'>불러오기</button>
+                            </div>
+                            <div class="col-sm-10 row">
+                                <img id="preview_labs_logo" src="" style="max-width: 200px; display: none;"/>
+                                <input type="hidden" id="create_labs_logo" name="logo"/>
+                            </div>
+                            <script>
+                                function listener_after_upload(file_type, url){
+                                    $("#preview_labs_logo").attr("src", url).show(); //이미지 미리보기를 표시함
+                                    $("#create_labs_logo").val(url); // hidden input에 저장
+                                }
+                                function readInputFile(input){
+                                    if (input.files && input.files[0]) {
+                                        let reader = new FileReader();
+                                        reader.onload = function(e) {
+                                            $("#preview_labs_logo").attr("src", e.target.result).show(); // 미리보기
+                                        };
+                                        reader.readAsDataURL(input.files[0]);
+                                    }
+                                }
+                            </script>
+                        </div>
+                        <div class="m-b" style="text-align: right;">
+                            <button class="btn btn-primary btn-sm" onclick="create_labs()">등록하기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $( document ).ready(function() {
+                console.log( "ready!" );
+                //create_labs();
+            });
+            function create_labs(){
+                if(!listenerBeforeCreate()){
+                    return false;
+                }
+                let _param = {
+                    'prof' : $("#create_labs_professor").val(),
+                    'logo' : $("#create_labs_logo").val(),
+                    'cate' : $("#create_labs_cate").val(),
+                    'name' : $("#create_labs_name").val(),
+                    'intro' : $("#create_labs_intro").val()
+                };
+
+                let _data = new Map();
+                _data.url = "/api/labs";
+                _data.type = "POST";
+                _data.param = _param;
+                _data.success = function(obj_data, obj_status, obj_xhr){
+                    alert("등록");
+                    location.reload();
+                }
+                _data.error = function(obj_data, obj_status, obj_xhr){
+                    alert("정상적으로 이루어지지 않았습니다. 다시 시도해주세요.");
+                }
+                func_ajax(_data);
+            }
+        </script>
+        <body th:replace="~{@{includes/admin/footer}}"></body>
+    </div>
+    <body th:replace="~{@{includes/admin/right_sidebar}}"></body>
+</div>
+<body th:replace="~{@{includes/admin/bottom}}"></body>
+</body>
+</html>

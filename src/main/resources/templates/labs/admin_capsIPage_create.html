@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <head th:replace="~{@{includes/admin/head}}"></head>
+</head>
+<body>
+
+<div id="wrapper">
+    <body th:replace="~{@{includes/admin/nav}}"></body>
+    <script>
+        $(".sidemenu_li_capsI").addClass("active");
+    </script>
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        <body th:replace="~{@{includes/admin/navbar_top}}"></body>
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-10">
+                <h2>Capstone I 신규</h2>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/admin">Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a>글 모음</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="/labs/admin_capsIPage_list">Capstone I 목록</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        <strong>Capstone I 신규</strong>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-lg-2">
+            </div>
+        </div>
+
+        <div class="animated fadeInRight" style="padding-top:12.5px;padding-bottom:0px;">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox-title">
+                        <h5>신규 등록</h5>
+                    </div>
+                    <div class="ibox-content" style="padding-bottom:0.1px;">
+                        <div class="form-group row">
+
+                            <label class="col-sm-2 col-form-label">*지도교수님</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="input_required form-control m-b" id="create_capsI_professor" keyword="prof" placeholder="교수님명을 입력하세요" errormsg="필수값입니다."/>
+                            </div>
+                            <label class="col-sm-6"></label>
+
+                            <label class="col-sm-2 col-form-label">*서비스명</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="input_required form-control m-b" id="create_capsI_name" keyword="name" placeholder="서비스명을 입력하세요" errormsg="필수값입니다."/>
+                            </div>
+                            <label class="col-sm-6"></label>
+
+                            <label class="col-sm-2 col-form-label">*팀원명</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="input_required form-control m-b" id="create_capsI_member" keyword="member" placeholder="팀원명을 입력하세요" errormsg="필수값입니다."/>
+                            </div>
+                            <label class="col-sm-6"></label>
+
+                            <label class="col-sm-2 col-form-label">*학기</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="input_required form-control m-b" id="create_capsI_semester" keyword="semester" placeholder="학기를 입력하세요" errormsg="필수값입니다."/>
+                            </div>
+                            <label class="col-sm-6"></label>
+
+                            <label class="col-sm-2 col-form-label">대표사진</label>
+                            <div class="d-flex align-items-center">
+                                <input class="hide" type="file" id="img_capsI_img" onchange="readInputFile(this)"/>
+                                <button class="btn btn-sm btn-default" onclick='$("#img_capsI_img").trigger("click")'>불러오기</button>
+                            </div>
+                            <div class="col-sm-10 row">
+                                <img id="preview_capsI_logo" src="" style="max-width: 200px; display: none;"/>
+                                <input type="hidden" id="create_capsI_logo" name="logo"/>
+                            </div>
+                            <script>
+                                function listener_after_upload(file_type, url){
+                                    $("#preview_capsI_logo").attr("src", url).show(); //이미지 미리보기를 표시함
+                                    $("#create_capsI_logo").val(url); // hidden input에 저장
+                                }
+                                function readInputFile(input){
+                                    if (input.files && input.files[0]) {
+                                        let reader = new FileReader();
+                                        reader.onload = function(e) {
+                                            $("#preview_capsI_logo").attr("src", e.target.result).show(); // 미리보기
+                                        };
+                                        reader.readAsDataURL(input.files[0]);
+                                    }
+                                }
+                            </script>
+                        </div>
+                        <div class="m-b" style="text-align: right;">
+                            <button class="btn btn-primary btn-sm" onclick="create_capsI()">등록하기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $( document ).ready(function() {
+                console.log( "ready!" );
+                //create_capsI();
+            });
+            function create_capsI(){
+                if(!listenerBeforeCreate()){
+                    return false;
+                }
+                let _param = {
+                    'prof' : $("#create_capsI_professor").val(),
+                    'logo' : $("#create_capsI_logo").val(),
+                    'member' : $("#create_capsI_member").val(),
+                    'semester' : $("#create_capsI_semester").val(),
+                    'name' : $("#create_capsI_name").val()
+                };
+
+                let _data = new Map();
+                _data.url = "/api/capsI";
+                _data.type = "POST";
+                _data.param = _param;
+                _data.success = function(obj_data, obj_status, obj_xhr){
+                    alert("등록");
+                    location.reload();
+                }
+                _data.error = function(obj_data, obj_status, obj_xhr){
+                    alert("정상적으로 이루어지지 않았습니다. 다시 시도해주세요.");
+                }
+                func_ajax(_data);
+            }
+        </script>
+        <body th:replace="~{@{includes/admin/footer}}"></body>
+    </div>
+    <body th:replace="~{@{includes/admin/right_sidebar}}"></body>
+</div>
+<body th:replace="~{@{includes/admin/bottom}}"></body>
+</body>
+</html>
