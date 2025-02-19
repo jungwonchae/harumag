@@ -4,24 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Haru Magazine - labsPage - capIIpage</title>
-    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/resources/frontuser/css/styles.css">
+    <!--jquery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
 </head>
 <body>
+<script id="list_info_capsII" type="text/x-handlebars-template">
+    {{#resultData_capsII}}
+    <div class="labs-card">
+        <img src="/resources/frontuser/images/catcat.png" alt="MMIC Lab Logo" class="labs-card-image">
+        <div class="labs-card-divider"></div>
+        <div class="labs-card-content">
+            <p>지도교수: {{prof}} 교수님</p>
+            <h3>{{name}}</h3>
+            <h4>
+                팀원: {{member}}
+            </h4>
+            <p class="labs-tags">{{semester}}학기 캡스톤 축제</p>
+        </div>
+        <div style="display: none;">
+            <input class="input_cursor_createdAt" value="{{createdAt}}"/>
+            <input class="input_cursor_prof" value="{{prof}}"/>
+        </div>
+    </div>
+    {{/resultData_capsII}}
+</script>
+
+<script type="text/javascript">
+    var list_info_capsII = $("#list_info_capsII").html();
+    var list_info_capsII_template = Handlebars.compile(list_info_capsII);
+</script>
+
     <!-- Header -->
     <header class="header">
         <div class="header-logo">
             <a href="/pages/homePage.html">
-                <img src="/assets/images/haru_logo.svg" alt="HARU Logo">
+                <img src="/resources/frontuser/images/haru_logo.svg" alt="HARU Logo">
             </a>
         </div>        
         <nav class="header-nav">
             <ul>
-                <li><a href="/pages/lab/labsPage.html" class="active">lab</a></li>
-                <li><a href="/pages/news/awardPage.html">news</a></li>
-                <li><a href="/pages/articles/interviewPage.html">articles</a></li>
-                <li><a href="/pages/newsletter/newsletterPage.html">newsletter</a></li>
-                <li><a href="/pages/shop/goodsPage.html">shop</a></li>
-                <li><a href="/pages/auth/loginPage.html" class="login-btn">Log In</a></li>
+                <li><a href="/labs/labsPage" class="active">lab</a></li>
+                <li><a href="/news/awardPage">news</a></li>
+                <li><a href="/articles/interviewPage">articles</a></li>
+                <li><a href="/newsletter/newsletterPage">newsletter</a></li>
+                <li><a href="/shop/goodsPage">shop</a></li>
+                <li><a href="/auth/loginPage" class="login-btn">Log In</a></li>
             </ul>
         </nav>
     </header>
@@ -32,9 +61,9 @@
         <section class="contents-page">
             <aside class="contents-nav">
                 <ul>
-                    <li><a href="/pages/lab/labsPage.html" class="contents-item">LABs</a></li>
-                    <li><a href="/pages/lab/capIPage.html" class="contents-item">Capstone I</a></li>
-                    <li><a href="/pages/lab/capIIPage.html" class="contents-item active">Capstone II</a></li>
+                    <li><a href="/labs/labsPage" class="contents-item">LABs</a></li>
+                    <li><a href="/labs/capIPage" class="contents-item">Capstone I</a></li>
+                    <li><a href="/labs/capIIPage" class="contents-item active">Capstone II</a></li>
                 </ul>
             </aside>
             <section class="inner-content">
@@ -43,7 +72,7 @@
                     <div class="labs-search-container">
                         <input type="text" id="labs-search-input" class="labs-search-input" placeholder=" ">
                         <button class="labs-search-icon">
-                            <img src="/assets/images/search_icon.svg" alt="Search Icon">
+                            <img src="/resources/frontuser/images/search_icon.svg" alt="Search Icon">
                         </button>
                     </div>
                     <div class="labs-sort-container">
@@ -57,20 +86,19 @@
                 </section>
 
                 <!-- capIpage 콘텐츠 -->
-                <section id="labs-list" class="labs-list">
-                    <div class="labs-card">
-                        <img src="/assets/images/catcat.png" alt="Capstone I Logo" class="labs-card-image">
-                        <div class="labs-card-divider"></div>
-                        <div class="labs-card-content">
-                            <p>지도교수: 김세진 교수님</p>
-                            <h3>UPtoYOU: 친환경을 가장 재미있게 실천하는 방법</h3>
-                            <h4>
-                                팀원: 이민서, 우지윤
-                            </h4>
-                            <p class="labs-tags">2025 봄학기 캡스톤 축제</p>
-                        </div>
-                    </div>
-                </section>
+                <section id="body_capsII_list" class="labs-list"></section>
+<!--                    <div class="labs-card">-->
+<!--                        <img src="/resources/frontuser/images/catcat.png" alt="Capstone I Logo" class="labs-card-image">-->
+<!--                        <div class="labs-card-divider"></div>-->
+<!--                        <div class="labs-card-content">-->
+<!--                            <p>지도교수: 김세진 교수님</p>-->
+<!--                            <h3>UPtoYOU: 친환경을 가장 재미있게 실천하는 방법</h3>-->
+<!--                            <h4>-->
+<!--                                팀원: 이민서, 우지윤-->
+<!--                            </h4>-->
+<!--                            <p class="labs-tags">2025 봄학기 캡스톤 축제</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
             </section>
         </section>
@@ -117,7 +145,7 @@
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-left">
-                <img src="/assets/images/haru_logo.svg" alt="HARU Logo">
+                <img src="/resources/frontuser/images/haru_logo.svg" alt="HARU Logo">
                 <p>소중한 하루를 만드는 정보와 이야기를 전하는 온라인 매거진</p>
             </div>
             <div class="footer-divider"></div>
@@ -139,7 +167,7 @@
                 <div class="footer-column">
                     <h3>Follow Us</h3>
                     <ul>
-                        <li><a href="#"><img src="/assets/images/insta_icon.svg" alt="Instagram"></a></li>
+                        <li><a href="#"><img src="/resources/frontuser/images/insta_icon.svg" alt="Instagram"></a></li>
                     </ul>
                 </div>
             </div>
@@ -149,6 +177,51 @@
         </div>
     </footer>
 </body>
+<script>
+    $( document ).ready(function() {
+        console.log( "ready!" );
+        search_capsII();
+    });
+</script>
+<script>
+    function search_capsII(){
+        $.ajax({
+            url: "/api/capsII/list",
+            type: "GET",
+            contentType : 'application/json; charset=utf-8',
+            data: {
+                deleted : $("#search_deleted").val()
+                ,perpage : $("#perpage").val()
+                ,cursor : $("#cursor").val()
+                ,orderby : $("#orderby").val()
+                ,orderway : $("#orderway").val()
+                ,sdate : $("#search_sdate").val()
+                ,fdate : $("#search_fdate").val()
 
-</body>
+                ,prof : $("#search_prof").val()
+                ,logo : $("#search_logo").val()
+                ,member : $("#search_member").val()
+                ,semester : $("#search_semester").val()
+                ,name : $("#search_name").val()
+            },
+            success: (obj_data, status, xhr)=>{
+                //alert(JSON.stringify(obj_data));
+                let filterDeletedData = obj_data.filter(item => item.deleted === "N");
+                if(filterDeletedData.length === 0){
+                    alert("no Data");
+                }
+                if($("#input_keyword_changed").val() + "" === "1"){
+                    $("#body_capsII_list").html("");
+                    $("#input_keyword_changed").val("");
+                }
+                $("#body_capsII_list").append(list_info_capsII_template({"resultData_capsII":filterDeletedData}));
+            },
+            error: (obj_data, status, xhr)=>{
+                alert("정상적으로 이루어지지 않았습니다. 다시 시도해주세요.");
+            }
+            // func_ajax(_data); 시큐리티를 위함
+        });
+
+    }
+</script>
 </html>
