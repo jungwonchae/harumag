@@ -179,7 +179,7 @@
             <p>Copyright © 2025. All rights reserved.</p>
         </div>
     </footer>
-
+</body>
 <script>
     $( document ).ready(function() {
         console.log( "ready!" );
@@ -188,90 +188,50 @@
 </script>
 <script>
     function search_labs(){
-        let cursor = $("#cursor").val();
-        let orderway = $("#orderway").val();
-        let orderby = $("#orderby").val();
-        let input_cursor = null;
-        if(orderway == "desc"){
-            if(orderby == "created_at"){
-                input_cursor = $(".input_cursor");
-            } else if(orderby == "prof"){
-                input_cursor = $(".input_cursor_prof");
-            }
-            if(input_cursor.length > 0){
-                cursor = $(input_cursor[0]).val();
-                for(let i=0;i<input_cursor.length;i++){
-                    if(cursor > $(input_cursor[i]).val()){
-                        cursor = $(input_cursor[i]).val();
-                    }
+        $.ajax({
+            url: "/api/labs/list",
+            type: "GET",
+            contentType : 'application/json; charset=utf-8',
+            data: {
+                deleted : $("#search_deleted").val()
+                ,perpage : $("#perpage").val()
+                ,cursor : $("#cursor").val()
+                ,orderby : $("#orderby").val()
+                ,orderway : $("#orderway").val()
+                ,sdate : $("#search_sdate").val()
+                ,fdate : $("#search_fdate").val()
+
+                ,prof : $("#search_prof").val()
+                ,logo : $("#search_logo").val()
+                ,cate : $("#search_cate").val()
+                ,name : $("#search_name").val()
+                ,intro : $("#search_intro").val()
+            },
+            success: (obj_data, status, xhr)=>{
+                //alert(JSON.stringify(obj_data));
+                let filterDeletedData = obj_data.filter(item => item.deleted === "N");
+                if(filterDeletedData.length === 0){
+                    alert("no Data");
                 }
-            }
-        } else {
-            if(orderby == "created_at"){
-                input_cursor = $(".input_cursor_createdAt");
-            } else if(orderby == "prof"){
-                input_cursor = $(".input_cursor_prof");
-            }
-            if(input_cursor.length > 0){
-                cursor = $(input_cursor[0]).val();
-                for(let i=0;i<input_cursor.length;i++){
-                    if(cursor < $(input_cursor[i]).val()){
-                        cursor = $(input_cursor[i]).val();
-                    }
+                if($("#input_keyword_changed").val() + "" === "1"){
+                    $("#body_labs_list").html("");
+                    $("#input_keyword_changed").val("");
                 }
-            }
-        }
-        $("#cursor").val(cursor);
-        //alert(cursor);
-        //return false;
-        if($("#input_keyword_changed").val() + "" === "1"){
-            $("#cursor").val("");
-        }
+                $("#body_labs_list").append(list_info_labs_template({"resultData_labs":filterDeletedData}));
 
-        let params = {
-            'deleted' : $("#search_deleted").val()
-            ,'perpage' : $("#perpage").val()
-            ,'cursor' : $("#cursor").val()
-            ,'orderby' : $("#orderby").val()
-            ,'orderway' : $("#orderway").val()
-            ,'sdate' : $("#search_sdate").val()
-            ,'fdate' : $("#search_fdate").val()
-
-            ,'prof' : $("#search_prof").val()
-            ,'logo' : $("#search_logo").val()
-            ,'cate' : $("#search_cate").val()
-            ,'name' : $("#search_name").val()
-            ,'intro' : $("#search_intro").val()
-        };
-        let _data = {};
-        _data.url = "/api/labs/mlist";
-        _data.type = "GET";
-        _data.param = params;
-        _data.success = function(obj_data, obj_status, obj_xhr){
-            //alert(JSON.stringify(obj_data));
-            let each_list = obj_data;
-            if($("#input_keyword_changed").val() + "" === "1"){
-                $("#body_labs_list").html("");
-                $("#input_keyword_changed").val("");
+                let detailKeys = Object.keys(obj_data);
+                for (let eachKey of detailKeys){
+                    //alert(eachKey);
+                    $(".font_" + eachKey).text(obj_data[eachKey]);
+                }
+                //listenerAfterList();
+            },
+            error: (obj_data, status, xhr)=>{
+                alert("정상적으로 이루어지지 않았습니다. 다시 시도해주세요.");
             }
-            if(each_list.length == 0){
-                alert("no Data");
-            }
+            // func_ajax(_data); 시큐리티를 위함
+        });
 
-            $("#body_labs_list").append(list_info_labs_template({"resultData_labs":each_list}));
-
-            let detailKeys = Object.keys(obj_data);
-            for (let eachKey of detailKeys){
-                //alert(eachKey);
-                $(".font_" + eachKey).text(obj_data[eachKey]);
-            }
-            listenerAfterList();
-        }
-        _data.error = function(obj_data, obj_status, obj_xhr){
-            alert("정상적으로 이루어지지 않았습니다. 다시 시도해주세요.");
-        }
-        func_ajax(_data);
     }
 </script>
-</body>
 </html>
