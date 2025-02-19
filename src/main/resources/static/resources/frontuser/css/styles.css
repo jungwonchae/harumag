@@ -7,7 +7,7 @@
 }
 @font-face {
   font-family: "RedHatDisplay";
-  src: url("/assets/fonts/RedHatDisplay.ttf") format("truetype");
+  src: url("/resources/frontuser/fonts/RedHatDisplay.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }

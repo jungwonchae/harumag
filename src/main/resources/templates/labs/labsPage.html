@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haru Magazine - labsPage</title>
+    <link rel="stylesheet" href="/resources/frontuser/css/styles.css">
+    <!--jquery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
+</head>
+<body>
+
+<script id="list_info_labs" type="text/x-handlebars-template">
+    {{#resultData_labs}}
+    <div class="labs-card">
+        <img src="/resources/frontuser/images/catcat.png" alt="MMIC Lab Logo" class="labs-card-image">
+        <div class="labs-card-divider"></div>
+        <div class="labs-card-content">
+            <p>{{prof}} 교수님</p>
+            <h3>{{name}} LAB</h3>
+            <h4>
+                {{intro}}
+            </h4>
+            <p class="labs-tags">{{cate}}</p>
+        </div>
+        <div style="display: none;">
+            <input class="input_cursor_createdAt" value="{{createdAt}}"/>
+            <input class="input_cursor_prof" value="{{prof}}"/>
+        </div>
+    </div>
+    {{/resultData_labs}}
+</script>
+<script type="text/javascript">
+    var list_info_labs = $("#list_info_labs").html();
+    var list_info_labs_template = Handlebars.compile(list_info_labs);
+</script>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-logo">
+            <a href="/pages/homePage.html">
+                <img src="/resources/frontuser/images/haru_logo.svg" alt="HARU Logo">
+            </a>
+        </div>        
+        <nav class="header-nav">
+            <ul>
+                <li><a href="/labs/labsPage" class="active">lab</a></li>
+                <li><a href="/news/awardPage">news</a></li>
+                <li><a href="/articles/interviewPage">articles</a></li>
+                <li><a href="/newsletter/newsletterPage">newsletter</a></li>
+                <li><a href="/shop/goodsPage">shop</a></li>
+                <li><a href="/auth/loginPage" class="login-btn">Log In</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+        <!-- 왼쪽 영역 : 목차 -->
+        <section class="contents-page">
+            <aside class="contents-nav">
+                <ul>
+                    <li><a href="/labs/labsPage" class="contents-item active">LABs</a></li>
+                    <li><a href="/labs/capIPage" class="contents-item">Capstone I</a></li>
+                    <li><a href="/labs/capIIPage" class="contents-item">Capstone II</a></li>
+                </ul>
+            </aside>
+            <section class="inner-content">
+                <!-- 오른쪽 영역 : 검색 및 내용 -->
+                <section class="labs-header">
+                    <div class="labs-search-container">
+                        <input type="text" id="labs-search-input" class="labs-search-input" placeholder=" ">
+                        <button class="labs-search-icon">
+                            <img src="/resources/frontuser/images/search_icon.svg" alt="Search Icon">
+                        </button>
+                    </div>
+                    <div class="labs-sort-container">
+                        <button id="labs-sort-btn" class="labs-sort-btn">All ▼</button>
+                        <ul id="labs-sort-options" class="labs-sort-options">
+                            <li data-sort="all">All</li>
+                            <li data-sort="asc">가나다순</li>
+                            <li data-sort="desc">역순</li>
+                        </ul>
+                    </div>
+                </section>
+                <!-- LABs 콘텐츠 -->
+                <section id="body_labs_list" class="labs-list"></section>
+<!--                <section id="labs-list" class="labs-list">-->
+<!--                    &lt;!&ndash; 첫 번째 카드 &ndash;&gt;-->
+<!--                    <div class="labs-card">-->
+<!--                        <img src="/resources/frontuser/images/catcat.png" alt="MMIC Lab Logo" class="labs-card-image">-->
+<!--                        <div class="labs-card-divider"></div> &lt;!&ndash; 사진과 내용 사이의 선 &ndash;&gt;-->
+<!--                        <div class="labs-card-content">-->
+<!--                            <p>김영식 교수님</p>-->
+<!--                            <h3>MMIC LAB</h3>-->
+<!--                            <h4>-->
+<!--                                MMIC Lab(Monolithic Microwave Integrated Circuit Laboratory)은 유/무선 통신에 활용되는-->
+<!--                                고속·저전력 회로에 대한 연구를 하는 곳입니다.-->
+<!--                                </h4>-->
+<!--                                    <p class="labs-tags">#통신 #전력 회로</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </section>-->
+            </section>
+        </section>
+    </main>
+
+    <script>
+        //화살표 애니메이션
+        document.addEventListener("DOMContentLoaded", () => {
+            const sortButton = document.getElementById("labs-sort-btn");
+            const sortOptions = document.getElementById("labs-sort-options");
+            const sortItems = document.querySelectorAll("#labs-sort-options li");
+
+            // 초기 버튼 텍스트 설정
+            let currentSort = "All";
+            sortButton.textContent = `${currentSort} ▼`;
+
+            // 버튼 클릭 시 옵션 표시/숨김
+            sortButton.addEventListener("click", () => {
+                sortOptions.classList.toggle("show");
+            });
+
+            // 옵션 클릭 시 처리
+            sortItems.forEach(item => {
+                item.addEventListener("click", () => {
+                    currentSort = item.textContent; // 클릭된 옵션의 텍스트 가져오기
+                    sortButton.textContent = `${currentSort} ▼`; // 버튼 텍스트 변경
+                    sortOptions.classList.remove("show"); // 옵션 숨기기
+
+                    // 정렬 로직 추가 가능
+                    console.log(`선택된 정렬: ${item.getAttribute("data-sort")}`);
+                });
+            });
+
+            // 페이지 외부 클릭 시 옵션 숨기기
+            document.addEventListener("click", (e) => {
+                if (!sortButton.contains(e.target) && !sortOptions.contains(e.target)) {
+                    sortOptions.classList.remove("show");
+                }
+            });
+        });
+    </script>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="/resources/frontuser/images/haru_logo.svg" alt="HARU Logo">
+                <p>소중한 하루를 만드는 정보와 이야기를 전하는 온라인 매거진</p>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-right">
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Notice</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Subscribe</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="#"><img src="/resources/frontuser/images/insta_icon.svg" alt="Instagram"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2025. All rights reserved.</p>
+        </div>
+    </footer>
+
+<script>
+    $( document ).ready(function() {
+        console.log( "ready!" );
+        search_labs();
+    });
+</script>
+<script>
+    function search_labs(){
+        let cursor = $("#cursor").val();
+        let orderway = $("#orderway").val();
+        let orderby = $("#orderby").val();
+        let input_cursor = null;
+        if(orderway == "desc"){
+            if(orderby == "created_at"){
+                input_cursor = $(".input_cursor");
+            } else if(orderby == "prof"){
+                input_cursor = $(".input_cursor_prof");
+            }
+            if(input_cursor.length > 0){
+                cursor = $(input_cursor[0]).val();
+                for(let i=0;i<input_cursor.length;i++){
+                    if(cursor > $(input_cursor[i]).val()){
+                        cursor = $(input_cursor[i]).val();
+                    }
+                }
+            }
+        } else {
+            if(orderby == "created_at"){
+                input_cursor = $(".input_cursor_createdAt");
+            } else if(orderby == "prof"){
+                input_cursor = $(".input_cursor_prof");
+            }
+            if(input_cursor.length > 0){
+                cursor = $(input_cursor[0]).val();
+                for(let i=0;i<input_cursor.length;i++){
+                    if(cursor < $(input_cursor[i]).val()){
+                        cursor = $(input_cursor[i]).val();
+                    }
+                }
+            }
+        }
+        $("#cursor").val(cursor);
+        //alert(cursor);
+        //return false;
+        if($("#input_keyword_changed").val() + "" === "1"){
+            $("#cursor").val("");
+        }
+
+        let params = {
+            'deleted' : $("#search_deleted").val()
+            ,'perpage' : $("#perpage").val()
+            ,'cursor' : $("#cursor").val()
+            ,'orderby' : $("#orderby").val()
+            ,'orderway' : $("#orderway").val()
+            ,'sdate' : $("#search_sdate").val()
+            ,'fdate' : $("#search_fdate").val()
+
+            ,'prof' : $("#search_prof").val()
+            ,'logo' : $("#search_logo").val()
+            ,'cate' : $("#search_cate").val()
+            ,'name' : $("#search_name").val()
+            ,'intro' : $("#search_intro").val()
+        };
+        let _data = {};
+        _data.url = "/api/labs/mlist";
+        _data.type = "GET";
+        _data.param = params;
+        _data.success = function(obj_data, obj_status, obj_xhr){
+            //alert(JSON.stringify(obj_data));
+            let each_list = obj_data;
+            if($("#input_keyword_changed").val() + "" === "1"){
+                $("#body_labs_list").html("");
+                $("#input_keyword_changed").val("");
+            }
+            if(each_list.length == 0){
+                alert("no Data");
+            }
+
+            $("#body_labs_list").append(list_info_labs_template({"resultData_labs":each_list}));
+
+            let detailKeys = Object.keys(obj_data);
+            for (let eachKey of detailKeys){
+                //alert(eachKey);
+                $(".font_" + eachKey).text(obj_data[eachKey]);
+            }
+            listenerAfterList();
+        }
+        _data.error = function(obj_data, obj_status, obj_xhr){
+            alert("정상적으로 이루어지지 않았습니다. 다시 시도해주세요.");
+        }
+        func_ajax(_data);
+    }
+</script>
+</body>
+</html>
