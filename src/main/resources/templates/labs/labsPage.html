@@ -219,11 +219,11 @@
                 }
                 $("#body_labs_list").append(list_info_labs_template({"resultData_labs":filterDeletedData}));
 
-                let detailKeys = Object.keys(obj_data);
-                for (let eachKey of detailKeys){
-                    //alert(eachKey);
-                    $(".font_" + eachKey).text(obj_data[eachKey]);
-                }
+                // let detailKeys = Object.keys(obj_data);
+                // for (let eachKey of detailKeys){
+                //     //alert(eachKey);
+                //     $(".font_" + eachKey).text(obj_data[eachKey]);
+                // }
                 //listenerAfterList();
             },
             error: (obj_data, status, xhr)=>{
